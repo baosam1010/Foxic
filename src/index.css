@@ -1,0 +1,59 @@
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .reshow {
+      @apply transform translate-x-3 translate-y-10 !important;
+    },
+    .reshow2 {
+      @apply transform translate-x-3 translate-y-16 !important;
+    },
+    .colorArrow {
+        @apply bg-gray-300 hover:bg-indigo-500 rounded w-10 h-10 m-3 !important;
+    },
+    .positionArrow {
+      @apply top-0 right-0 !important;
+    }
+    .activeBrand{
+      @apply text-black;
+    },
+    .showItem{
+      @apply flex !important;
+    }
+    .addBefore::before{
+      @apply  absolute -top-9 right-0 block content-1 bg-transparent w-16 h-10 z-20;
+    }
+    .addHover::hover{
+      @apply bg-gray-500;
+    },
+    .addDouble::after{
+      @apply  absolute block content-2 text-center  text-green-300  right-12 top-2/4  text-8xl  ;
+    },
+    .cmtList:first-child{
+      @apply mt-7
+    },
+    .LinkColor{
+     @apply border-indigo-500;
+    },
+    .activeList{
+      @apply bg-green-300 text-white;
+    },
+    .slick-prev::before{
+      @apply  text-3xl text-green-400   !important;
+    },
+    .slick-next::before{
+      @apply text-3xl text-green-400  !important;
+    },
+    .slick-prev{
+      @apply w-7-30 !important;
+    },
+    .slick-next{
+      @apply w-7-30 !important;
+    }
+    
+    
+ 
+  }
