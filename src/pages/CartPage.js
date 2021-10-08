@@ -42,20 +42,20 @@ function CartPage(props) {
 
     return (
         <div className="m-20">
-            <h2 className="mb-4 text-2xl font-semibold text-indigo-500">Danh Sách Sản Phẩm</h2>
+            <h2 className="mb-4 text-2xl font-semibold text-indigo-500">Product List</h2>
             <div className="mb-4">
-                <h3 className={classNames(cartNum >0 ? 'hidden' : 'block', "text-lg font-medium  mb-2")}>Chưa Có Sản Phẩm</h3>
-                <Link to='/' className="btn btn-primary">Add Product!!!</Link>
+                <h3 className={classNames(cartNum >0 ? 'hidden' : 'block', "text-lg font-medium  mb-2")}>No product in your Cart!!!</h3>
+                <Link to='/' className="px-2 py-2 font-medium rounded bg-yellow-400 hover:text-white hover:bg-black">Add Product!!!</Link>
             </div>
             <table className={classNames(cartNum>0?'block':'hidden',"table table-bordered max-w-7xl rounded")}>
                 <thead>
                     <tr className="text-center">
-                        <th>STT</th>
-                        <th>Tên</th>
-                        <th>Số Lượng</th>
-                        <th>Giá (USD)</th>
-                        <th>Thành Tiền</th>
-                        <th>Xóa Sản Phẩm</th>
+                        <th className="text-xl font-semibold">#</th>
+                        <th>Name</th>
+                        <th>Quantity</th>
+                        <th>Price/Unit (USD)</th>
+                        <th>Prices</th>
+                        <th>Delate Product</th>
                     </tr>
                 </thead>
                 <tbody>

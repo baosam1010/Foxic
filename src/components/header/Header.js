@@ -4,9 +4,9 @@ import { useState } from 'react';
 import { connect } from 'react-redux';
 import logo from './../../assets/images/logo.webp';
 import { Link } from 'react-router-dom';
-import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import CarouselHeader from './CarouselHeader';
 
 
 function Header(props) {
@@ -15,24 +15,24 @@ function Header(props) {
     const { products, wishListCart: listCart } = props;
     let numWishList = listCart.length;
     let num = products.length;
-    const { isLogin, setIsLogin, user, Logout } = props;
+    const { isLogin, setIsLogin, user, Logout, isRegister, setIsRegister } = props;
 
-    const settings = {
-        dots: false,
-        infinite: true,
+    // const settings = {
+    //     dots: false,
+    //     infinite: true,
 
-        slidesToShow: 1,
-        slidesToScroll: 1,
+    //     slidesToShow: 1,
+    //     slidesToScroll: 1,
 
-        autoplay: true,
-        speed: 1000,
-        autoplaySpeed: 3000,
-        cssEase: "linear",
+    //     autoplay: true,
+    //     speed: 1000,
+    //     autoplaySpeed: 3000,
+    //     cssEase: "linear",
 
-        vertical: true,
-        verticalSwiping: true,
-        swipeToSlide: true,
-    };
+    //     vertical: true,
+    //     verticalSwiping: true,
+    //     swipeToSlide: true,
+    // };
 
     const openSearch = (e) => {
         setOpen(!open)
@@ -84,7 +84,8 @@ function Header(props) {
 
                     {/* slide auto */}
                     <div className=" overflow-hidden h-full w-96">
-                        <Slider {...settings}>
+                        <CarouselHeader />
+                        {/* <Slider {...settings}>
                             <div className="w-full  "  >
                                 <p className="block "><i className="fas fa-plane"></i> <span className="text-yellow-400">Free</span> plane shipping over <span className="text-yellow-400">$250</span> </p>
                             </div>
@@ -95,7 +96,7 @@ function Header(props) {
                                 <p className="block "><i className="fas fa-dragon"> </i> Use promocode <span className="text-yellow-400">FOXIC</span> to get 15% discount!</p>
                             </div>
 
-                        </Slider>
+                        </Slider> */}
                     </div>
 
 
@@ -138,7 +139,7 @@ function Header(props) {
                             <div className="hidden group-hover:block absolute top-0 right-0 transform translate-y-10 w-full z-10 bg-white rounded border border-gray-400">
                                 <ul className="w-full group">
                                     <li className={classNames(user.email !== "" ? 'hidden' : 'block', "w-full flex items-center hover:bg-gray-400  ")}>
-                                        <span className="w-full text-black text-base text-center px-2 py-1 hover:cursor-pointer">Register</span>
+                                        <span onClick={() => setIsRegister(!isRegister)} className="w-full text-black text-base text-center px-2 py-1 hover:cursor-pointer">Register</span>
                                     </li>
                                     <li className={classNames(user.email !== "" ? 'hidden' : 'block', "w-full flex items-center hover:bg-gray-400  ")}>
                                         <span onClick={() => setIsLogin(!isLogin)} className="w-full text-black text-base text-center px-2 py-1 hover:cursor-pointer">Login</span>

@@ -12,7 +12,7 @@ function PostsList(props) {
         let xhtml = null;
         xhtml = (
             <li key={post.id} className=" text-center">
-                <Link className="w-full h-auto overflow-hidden block " to="/stub">
+                <Link className="w-full h-auto overflow-hidden block " to={`/ourpost/${post.name}`}>
                     <img className="transform hover:scale-105 " src={post.image} alt="post1" />
                 </Link>
                 <h3 className="w-full text-xl font-semibold mt-4">

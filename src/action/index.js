@@ -57,4 +57,13 @@ export const actUpdateAccount = (inforAccountChange ) => {
     }
 };
 
+//action Comment
+export const actAddToComment = (comment ) => {
+    return {
+        type: Types.ADD_TO_COMMENT,
+        comment,    
+    }
+};
+
+
 

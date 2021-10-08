@@ -4,6 +4,7 @@ import Posts from './Posts';
 import Products from './Products';
 import WishListCart from './WishListCart';
 import AccountReducer from './AccountReducer';
+import Comments from './Comments';
 
 const rootReducer = combineReducers({
     Cart,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
     Products,
     WishListCart,
     AccountReducer,
+    Comments,
 });
 
 export default rootReducer;

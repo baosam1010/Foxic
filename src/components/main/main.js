@@ -60,6 +60,7 @@ function Main(props) {
         onAddToWishList={handleAddToWishList}
 
       />
+      
     </div>
   );
 }

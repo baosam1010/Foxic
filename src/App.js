@@ -16,14 +16,30 @@ import {
 import { Routes } from './constants/Routes';
 import userAdmin from './constants/admin'
 import LoginForm from './components/LoginForm';
+import RegisterForm from './components/RegisterForm';
 
 
 function App() {
 
   const [isToast, setIsToast] = useState(false);
   const [user, setUser] = useState({ name: '', email: '' });
+  const [userRegister, setUserRegister] = useState({ 
+    firstname: '',
+    lastname: '',
+    email: '',
+    phone:'',
+    address:{
+      street:'',
+      district:'',
+      city:'',
+      country:'',
+      zipcode:'',
+      default:false,
+      } ,
+    });
   const [error, setError] = useState('');
   const [isLogin, setIsLogin] = useState(false);
+  const [isRegister, setIsRegister] = useState(false);
 
   const Login = (details) => {
     console.log(details)
@@ -38,7 +54,35 @@ function App() {
     } else {
       setError('PLease check your email & password !!!')
     }
-  }
+  };
+
+  const Register = (details) => {
+    console.log(details)
+    if (details.email !== userAdmin.email && details.password === userAdmin.password) {
+      console.log('Registered')
+      setUserRegister({...userRegister,
+        firstname: details.firstname,
+        lastname: details.lastname,
+        email: details.email,
+        phone:details.phone,
+        password:details.password,
+        comfirmpasswords: details.comfirmpasswords,
+        address:{
+          street:details.address.street,
+          district:details.address.district,
+          city:details.address.city,
+          country:details.address.country,
+          zipcode:details.address.zipcode,
+          default:details.address.default,
+        }
+      });
+      setError('');
+      setIsRegister(!isRegister);
+    } else {
+      setError('PLease check your email & password !!!')
+    }
+  };
+
   const Logout = () => {
     console.log("logout");
     setUser({ ...user, ...{ name: '', email: '' } })
@@ -88,7 +132,7 @@ function App() {
     <Routers>
 
       <div className="max-w-full">
-        <Header isLogin={isLogin} setIsLogin={handleLoginForm} Logout={Logout} user={user} />
+        <Header isLogin={isLogin} isRegister={isRegister} setIsRegister={setIsRegister} setIsLogin={handleLoginForm} Logout={Logout} user={user} />
         <Switch>
           {showRoutes(Routes)}
         </Switch>
@@ -96,6 +140,7 @@ function App() {
         <ButtonTop />
         <Toast isOpen={isToast} setIsOpen={handleToast} />
         {isLogin && <LoginForm Login={Login} error={error} />}
+        {isRegister && <RegisterForm isRegister={isRegister} setIsRegister={setIsRegister} Register={Register}  error={error} />}
       </div>
     </Routers>
   );

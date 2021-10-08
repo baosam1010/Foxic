@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, {  useRef, useState } from 'react'
 import { Link } from 'react-router-dom';
-import ReactStars from "react-rating-stars-component";
+// import ReactStars from "react-rating-stars-component";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -10,11 +10,18 @@ import imgProDEs2 from './../assets/images/product-description-02.webp';
 import imgProDEs1 from './../assets/images/product-description-01.webp';
 import classNames from 'classnames';
 import { actAddToCart } from '../action';
+import SizeGuide from '../components/product/SizeGuide';
+import Delivery from '../components/product/Delivery';
+import ContentHeaderProduct from '../components/product/ContentHeaderProduct';
+import CarouselOverLay from '../components/main/overlay/CarouselOverLay';
 
 
 function ProductPage(props) {
 
     const { Products, onAddToCart } = props;
+    const [isSizeGuide, setIsSizeGuide] = useState(false);
+    const [isDelivery, setIsDelivery] = useState(false);
+    
     const { match } = props;
     let urlName = match.url.slice(9);
     // console.log(urlName);
@@ -45,16 +52,16 @@ function ProductPage(props) {
     product.linkimg = [...product[0].linkProduct, ...product[0].linkProductColor];
     // console.log('product:', product);
 
-    const ratingChanged = (newRating) => {
-        console.log("StarsProduct:", newRating);
-    };
+    // const ratingChanged = (newRating) => {
+    //     console.log("StarsProduct:", newRating);
+    // };
 
     let slider = useRef(null);
-    let slider1 = useRef(null);
-    let slider2 = useRef(null);
+    // let slider1 = useRef(null);
+    // let slider2 = useRef(null);
 
-    const [nav1, setNav1] = useState(null);
-    const [nav2, setNav2] = useState(null);
+    // const [nav1, setNav1] = useState(null);
+    // const [nav2, setNav2] = useState(null);
 
     function NextArrow1(props) {
         const { className, style, onClick } = props;
@@ -77,7 +84,7 @@ function ProductPage(props) {
             <button
                 className={className}
                 style={{
-                    ...style, display: "none", position: 'absolute', left: 0, background: "red",
+                    ...style, display: "none", position: 'absolute', left: 0, 
                     transform: "translate(84%,-50%)", zIndex: 2
                 }}
                 onClick={onClick}
@@ -93,38 +100,38 @@ function ProductPage(props) {
         prevArrow: <PrevArrow1 />
     };
 
-    function NextArrow(props) {
-        const { className, style, onClick } = props;
-        return (
-            <button
-                className={className}
-                style={{
-                    ...style, display: "block", position: 'absolute', right: 0, background: "green",
-                    zIndex: 2, transform: "translate(0%,-50%)"
-                }}
-                onClick={onClick}
-            > {`<`}</button>
-        );
-    };
+    // function NextArrow(props) {
+    //     const { className, style, onClick } = props;
+    //     return (
+    //         <button
+    //             className={className}
+    //             style={{
+    //                 ...style, display: "block", position: 'absolute', right: 0, 
+    //                 zIndex: 2, transform: "translate(0%,-50%)"
+    //             }}
+    //             onClick={onClick}
+    //         > {`<`}</button>
+    //     );
+    // };
 
-    function PrevArrow(props) {
-        const { className, style, onClick } = props;
-        return (
-            <button
-                className={className}
-                style={{
-                    ...style, display: "block", position: 'absolute', left: 0, background: "red",
-                    transform: "translate(0%,-50%)", zIndex: 2
-                }}
-                onClick={onClick}
-            >{`>`}</button>
-        );
-    };
+    // function PrevArrow(props) {
+    //     const { className, style, onClick } = props;
+    //     return (
+    //         <button
+    //             className={className}
+    //             style={{
+    //                 ...style, display: "block", position: 'absolute', left: 0, background: "red",
+    //                 transform: "translate(0%,-50%)", zIndex: 2
+    //             }}
+    //             onClick={onClick}
+    //         >{`>`}</button>
+    //     );
+    // };
 
-    const settingArrow = {
-        nextArrow: <NextArrow />,
-        prevArrow: <PrevArrow />
-    };
+    // const settingArrow = {
+    //     nextArrow: <NextArrow />,
+    //     prevArrow: <PrevArrow />
+    // };
     const next = () => {
         slider.slickNext();
     };
@@ -132,50 +139,53 @@ function ProductPage(props) {
         slider.slickPrev();
     };
 
-    useEffect(() => {
-        setNav1(slider1)
-        setNav2(slider2)
-    }, []);
+    // useEffect(() => {
+    //     setNav1(slider1)
+    //     setNav2(slider2)
+    // }, []);
 
     function CustomSlide(props) {
         const { index, item: product, } = props
+        let nameProduct = product.name.toLowerCase().replace(/ /g, "-")
         return (
             <div className=" h-full px-4/16 " >
                 <div className="max-w-7xl h-full">
-                    <img className="object-cover h-full  " src={product.linkProduct[0]} alt={`pdoruct${index}`} />
+                    <Link to={`/product/${nameProduct}`}>
+                        <img className="object-cover h-full  " src={product.linkProduct[0]} alt={`pdoruct${index}`} />
+                    </Link>
                 </div>
             </div>
         )
     };
 
-    const showSlide = (product) => {
-        let result = null;
-        let arrSlide = [...product.linkProduct, ...product.linkProductColor]
-        result = arrSlide.map((item, index) => {
-            return (
-                <div key={product.name} className="w-full h-5/6  flex items-center bg-green-300">
-                    <img className="w-full object-cover" src={item} alt={`slide${index}`} />
-                </div>)
-        })
-        return result;
-    };
-    function Slide2Top(props){
-        const { index, item} = props
-        return (
-            <div key={item} className="px-2">
-                    <img className="w-full object-cover" src={item} alt={`slide${index}`} />
-            </div>
-        );
-    };
+    // const showSlide = (product) => {
+    //     let result = null;
+    //     let arrSlide = [...product.linkProduct, ...product.linkProductColor]
+    //     result = arrSlide.map((item, index) => {
+    //         return (
+    //             <div key={product.name} className="w-full h-5/6  flex items-center bg-green-300">
+    //                 <img className="w-full object-cover" src={item} alt={`slide${index}`} />
+    //             </div>)
+    //     })
+    //     return result;
+    // };
+    // function Slide2Top(props){
+    //     const { index, item} = props
+    //     return (
+    //         <div key={item} className="px-2">
+    //                 <img className="w-full object-cover" src={item} alt={`slide${index}`} />
+    //         </div>
+    //     );
+    // };
 
-    const showSlide2 = (product) => {
-        let result = null;
-        let arrSlide = [...product.linkProduct, ...product.linkProductColor]
-        result = arrSlide.map((item, index) => {
-            return <Slide2Top key={item.name} item={item} index={index} />
-        })
-        return result;
-    };
+    // const showSlide2 = (product) => {
+    //     let result = null;
+    //     let arrSlide = [...product.linkProduct, ...product.linkProductColor]
+    //     result = arrSlide.map((item, index) => {
+    //         return <Slide2Top key={item.name} item={item} index={index} />
+    //     })
+    //     return result;
+    // };
 
     const showProductSlide = (products) => {
         let result = null;
@@ -228,26 +238,13 @@ function ProductPage(props) {
 
             {/* Content */}
             <div className="max-w-7xl m-auto">
-                <div className="mt-10 mb-6">
-                    <div className="w-full flex items-center">
-                        <ReactStars
-                            className=" w-full "
-                            count={5}
-                            onChange={ratingChanged}
-                            size={24}
-                            value={4}
-                            activeColor="#ffd700"
-                        />
-                        <Link to="/product" className="underline ml-2 hover:text-green-300"> (17 reviews)</Link>
-                    </div>
-                    <h1 className="text-2xl font-semibold leading-8 mt-2/10">{product[0].name}</h1>
-                </div>
-
+                <ContentHeaderProduct  product={product[0]}/>
                 {/* product */}
                 <div>
                     <div className="grid grid-cols-12 gap-4">
                         <div className="col-span-6">
-                            <div className="">
+                            <CarouselOverLay product={product[0]}/>
+                            {/* <div className="">
                                 <Slider
                                     asNavFor={nav2}
                                     ref={slider => (slider1 = slider)}
@@ -268,7 +265,7 @@ function ProductPage(props) {
                                 >
                                     {showSlide2(product[0])}
                                 </Slider>
-                            </div>
+                            </div> */}
 
                         </div>
 
@@ -435,11 +432,11 @@ function ProductPage(props) {
                                         <ul className="flex  items-center justify-between">
                                             <li className="">
                                                 <i className="mr-1 text-green-300 fas fa-ruler"></i>
-                                                <button className="hover:text-green-300 hover:underline">Size Guide</button>
+                                                <button onClick={() =>setIsSizeGuide(!isSizeGuide)} className="hover:text-green-300 hover:underline">Size Guide</button>
                                             </li>
                                             <li>
                                                 <i className="mr-1 text-green-300 fas fa-truck"></i>
-                                                <button className="hover:text-green-300 hover:underline">Delivery and Return</button>
+                                                <button onClick={() =>setIsDelivery(!isDelivery)} className="hover:text-green-300 hover:underline">Delivery and Return</button>
                                             </li>
                                             <li>
                                                 <i className="mr-1 text-green-300 fas fa-envelope"></i>
@@ -598,6 +595,7 @@ function ProductPage(props) {
                     </div>
                 </div>
             </div>
+            
             {/* footer buy product*/}
             <div className="bg-gray-50 fixed bottom-0 left-0 right-0 z-10">
                 <div className="max-w-7xl m-auto ">
@@ -636,11 +634,11 @@ function ProductPage(props) {
                             </div>
 
                         </div>
-
                     </div>
                 </div>
             </div>
-
+            <SizeGuide isSizeGuide={isSizeGuide} setIsSizeGuide={setIsSizeGuide} />
+            <Delivery isDelivery={isDelivery} setIsDelivery={setIsDelivery} />
         </div>
     )
 }
