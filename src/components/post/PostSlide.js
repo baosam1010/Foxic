@@ -6,8 +6,8 @@ import blogCarousel2 from "./../../assets/images/blog-fashion-03.webp";
 import blogCarousel3 from "./../../assets/images/blog-fashion-04.webp";
 
 function PostSlide(props) {
-  const { match, posts } = props;
-  const url = match.url.toLowerCase();
+  const {  posts } = props;
+//   const url = match.url.toLowerCase();
   // console.log('match_PostPage1:', url);
   // console.log('posts_PostPage1:', posts);
 
