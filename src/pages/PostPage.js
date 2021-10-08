@@ -17,9 +17,9 @@ function PostPage(props) {
   let dTime = new Date(Date.now());
   const { match, posts, onAddCommentPost, comments } = props;
   const url = match.url.slice(9);
-  console.log("match_PostPage1:", url);
-  console.log("posts_PostPage1:", posts);
-  console.log("comments1111:", comments);
+//   console.log("match_PostPage1:", url);
+//   console.log("posts_PostPage1:", posts);
+//   console.log("comments1111:", comments);
   const [comment, setComment] = useState({
     name: "",
     img:'',
@@ -96,7 +96,7 @@ function PostPage(props) {
                   by John Smith
                 </span>{" "}
               </Link>
-              <Link className="mx-3 mt-2 hover:text-green-300 block">
+              <Link to="/" className="mx-3 mt-2 hover:text-green-300 block">
                 <i className="mr-1 far fa-comment-dots"></i>
                 <span>15 Comments</span>
               </Link>
