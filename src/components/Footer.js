@@ -4,12 +4,12 @@ import {Link} from 'react-router-dom';
 
 function Footer() {
     return (
-        <div className="max-w-full bg-yellow-400 ">
+        <div className="max-w-full md:max-w-full bg-yellow-400 ">
             <div className="bg-black">
-                <ul className="max-w-7xl  m-auto  text-white grid grid-cols-3 ">
-                    <li className="flex px-4 py-12  ">
-                        <div className="mr-4">
-                            <i className="text-7xl fas fa-luggage-cart"></i>
+                <ul className="max-w-7xl  m-auto  text-white grid grid-cols-1 md:grid-cols-3 ">
+                    <li className="flex items-center justify-center px-4 py-2 md:py-12  ">
+                        <div className="mr-4 ">
+                            <i className="text-5xl md:text-7xl fas fa-luggage-cart"></i>
                         </div>
                         <div>
                             <h4 className="text-base font-semibold">Extra fast delivery</h4>
@@ -18,9 +18,9 @@ function Footer() {
                             </p>
                         </div>
                     </li>
-                    <li className="flex px-4 py-12  ">
-                        <div className="mr-4">
-                            <i className="text-7xl fas fa-coins"></i>
+                    <li className="flex items-center justify-center px-4 py-2 md:py-12  ">
+                        <div className="mr-4 ">
+                            <i className="text-5xl md:text-7xl fas fa-coins"></i>
                         </div>
                         <div>
                             <h4 className="text-base font-semibold">Best price</h4>
@@ -29,9 +29,9 @@ function Footer() {
                             </p>
                         </div>
                     </li>
-                    <li className="flex px-4 py-12 ">
-                        <div className="mr-4">
-                            <i className="text-7xl far fa-file-alt"></i>
+                    <li className="flex items-center justify-center px-4 py-2 md:py-12 ">
+                        <div className="mr-4 ">
+                            <i className="text-5xl md:text-7xl far fa-file-alt"></i>
                         </div>
                         <div>
                             <h4 className="text-base font-semibold">Guarantee</h4>
@@ -42,7 +42,7 @@ function Footer() {
                     </li>
                 </ul>
             </div>
-            <div className="max-w-7xl m-auto  grid grid-cols-4 pb-5 bg-yellow-400">
+            <div className="max-w-full  md:max-w-7xl m-auto  grid grid-cols-2 px-2 md:grid-cols-4 pb-5 bg-yellow-400">
                 <div className="mt-10">
                     <Link to="/">
                         <img src={logo} alt="logo" />
@@ -72,7 +72,7 @@ function Footer() {
                         <li className="mt-2 hover:text-indigo-500 hover:cursor-pointer">Shipping & Delivery</li>
                     </ul>
                 </div>
-                <div className="mt-10">
+                <div className="mt-10 ">
                     <h4 className="text-xl font-bold leading-7 mt-2 mb-3">Account details</h4>
                     <ul>
                         <li  className="hover:text-indigo-500 hover:cursor-pointer">My Account</li>
@@ -84,7 +84,7 @@ function Footer() {
                 </div>
                 <div className="mt-10">
                     <h4 className="text-xl font-bold leading-7 mt-2 mb-3">Safe payments</h4>
-                    <ul className="flex">
+                    <ul className="flex flex-col ">
                         <li className="text-5xl px-3 hover:text-indigo-500"><i className="fab fa-google-pay"></i></li>
                         <li className="text-5xl px-3 hover:text-indigo-500"><i className="fab fa-cc-visa"></i></li>
                         <li className="text-5xl px-3 hover:text-indigo-500"><i className="fab fa-apple-pay"></i></li>

@@ -6,9 +6,9 @@ function MainSlider() {
     return (
         <div className="max-w-full">
             <div id="carouselExampleInterval" className="carousel slide " data-bs-ride="carousel">
-                <div className="carousel-inner  h-500">
+                <div className="carousel-inner h-40 md:h-500">
                     <div className="carousel-item active transition duration-500 ease-linear " data-bs-interval="4000">
-                        <img className="object-cover" src={slider2} alt="slider1" />
+                        <img className=" object-cover" src={slider2} alt="slider1" />
                     </div>
                     <div className="carousel-item transition duration-500 ease-linear " data-bs-interval="2000" >
                         <img className="object-cover" src={slider1} alt="slider2" />

@@ -5,19 +5,19 @@ var initialState= data ? data : [
     {
         id:1,
         postname:'The High-Street Brand Fashion',
-        nameUser: 'Sam Sam',
+        name: 'Sam Sam',
         email: 'SamSam@hmail.com',
         content: 'it is very good for me!!!',
-        time: Date.now,
+        time: '',
         img:''
     },
     {
         id:1,
         postname:'The High-Street Brand Fashion',
-        nameUser: 'Sam Sam',
+        name: 'Sam Sam',
         email: 'SamSam1010@gmail.com',
         content: '!!!',
-        time: Date.now,
+        time: '',
         img:''
     }
 ]

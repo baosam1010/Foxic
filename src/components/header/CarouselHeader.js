@@ -47,23 +47,23 @@ function CarouselHeader() {
   }
   return (
     <Slider {...settings}>
-      <div className="w-full  ">
-        <p className="block ">
-          <i className="fas fa-plane"></i>{" "}
-          <span className="text-yellow-400">Free</span> plane shipping over{" "}
-          <span className="text-yellow-400">$250</span>{" "}
+      <div className="w-full text-center  ">
+        <p className="block w-full text-sm">
+          <i className="text-sm fas fa-plane"></i>{" "}
+          <span className="text-yellow-400 text-sm">Free</span> plane shipping over{" "}
+          <span className="text-yellow-400 text-sm">$250</span>{" "}
         </p>
       </div>
-      <div className="w-full">
-        <p className="block ">
-          <i className="fas fa-gift"></i> Today only! Post{" "}
-          <span className="text-yellow-400">holiday</span> Flash Sale! 2 for $20
+      <div className="w-full text-center">
+        <p className="block w-full  text-sm">
+          <i className="text-sm fas fa-gift"></i> Today only! Post{" "}
+          <span className="text-yellow-400 text-sm">holiday</span> Flash Sale! 2 for $20
         </p>
       </div>
-      <div className="w-full">
-        <p className="block ">
-          <i className="fas fa-dragon"> </i> Use promocode{" "}
-          <span className="text-yellow-400">FOXIC</span> to get 15% discount!
+      <div className="w-full  text-center">
+        <p className="block w-full text-sm">
+          <i className="text-sm fas fa-dragon"> </i> Use promocode{" "}
+          <span className="text-yellow-400 text-sm">FOXIC</span> to get 15% discount!
         </p>
       </div>
     </Slider>

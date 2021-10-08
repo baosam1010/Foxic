@@ -243,7 +243,7 @@ function ProductPage(props) {
                 <div>
                     <div className="grid grid-cols-12 gap-4">
                         <div className="col-span-6">
-                            <CarouselOverLay product={product[0]}/>
+                            <CarouselOverLay key= {product[0].name} product={product[0]}/>
                             {/* <div className="">
                                 <Slider
                                     asNavFor={nav2}

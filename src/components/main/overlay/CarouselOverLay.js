@@ -61,7 +61,7 @@ function CarouselOverLay(props) {
     let result = null;
     // console.log("linkImgShowSlide2:", linkImg);
     result = linkImg.map((item, index) => {
-      return <Slide2Top  item={item} index={index} />;
+      return <Slide2Top key={item}  item={item} index={index} />;
     });
     return result;
   };

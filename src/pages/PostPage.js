@@ -17,9 +17,7 @@ function PostPage(props) {
   let dTime = new Date(Date.now());
   const { match, posts, onAddCommentPost, comments } = props;
   const url = match.url.slice(9);
-//   console.log("match_PostPage1:", url);
-//   console.log("posts_PostPage1:", posts);
-//   console.log("comments1111:", comments);
+
   const [comment, setComment] = useState({
     name: "",
     img:'',
@@ -33,8 +31,7 @@ function PostPage(props) {
   const handleSubmitForm = (e) => {
     e.preventDefault();
     setComment({ ...comment });
-    console.log("commentADD:", comment);
-    // console.log("Submit Success")
+    // console.log("commentADD:", comment);
     onAddCommentPost(comment);
   };
 
@@ -50,7 +47,7 @@ function PostPage(props) {
         )
     })
 
-    console.log("arrComments:",arrComments)
+    // console.log("arrComments:",arrComments)
 
     return result;
   };
@@ -90,13 +87,13 @@ function PostPage(props) {
                 <i className="mr-1 far fa-calendar-alt"></i>
                 <span>August 27, 2020</span>
               </div>
-              <Link>
+              <Link to="/">
                 {" "}
                 <span className="block mx-3 mt-2 hover:text-green-300">
                   by John Smith
                 </span>{" "}
               </Link>
-              <Link to="/" className="mx-3 mt-2 hover:text-green-300 block">
+              <Link to="/ourpost" className="mx-3 mt-2 hover:text-green-300 block">
                 <i className="mr-1 far fa-comment-dots"></i>
                 <span>15 Comments</span>
               </Link>

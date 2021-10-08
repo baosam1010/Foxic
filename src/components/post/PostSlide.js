@@ -56,7 +56,7 @@ function PostSlide(props) {
     let result = null;
     result = posts.map((post, index) => {
         const{name,time, comments, image, content} = post
-        console.log(post)
+        // console.log(post)
       return (
         <div key={name}  className="w-full ">
           <div className="w-full flex">
@@ -79,7 +79,7 @@ function PostSlide(props) {
                   {name}
                 </h3>
               </Link>
-              <p className="mt-3 ">
+              <p className="mt-3 line-clamp-3">
                 {`${content}`}
               </p>
               <button className=" bg-green-400 text-white hover:bg-black uppercase text-sm font-bold rounded p-1 py-2 leading-4  mt-4">
@@ -131,7 +131,7 @@ function PostSlide(props) {
                   <span>15 comments</span>
                 </div>
               </div>
-              <Link to="">
+              <Link to="/">
                 <h3 className="text-2xl font-medium">
                   Trends to Try This Season
                 </h3>
@@ -163,7 +163,7 @@ function PostSlide(props) {
                   <span>15 comments</span>
                 </div>
               </div>
-              <Link to="">
+              <Link to="/">
                 <h3 className="text-2xl font-medium">
                   Trends to Try This Season
                 </h3>
@@ -195,7 +195,7 @@ function PostSlide(props) {
                   <span>15 comments</span>
                 </div>
               </div>
-              <Link to="">
+              <Link to="/">
                 <h3 className="text-2xl font-medium">
                   Trends to Try This Season
                 </h3>

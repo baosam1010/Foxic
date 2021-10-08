@@ -5,9 +5,9 @@ import banner2 from './../../assets/images/banner-fashion-2-04.webp';
 
 function Banner() {
     return (
-        <div className="max-w-7xl m-auto mb-20 block">
-            <div className="gird grid-cols-2 gap-8 flex mt-8 mx-4  ">
-                <div className="flex items-center justify-center relative">
+        <div className="max-w-sm md:max-w-7xl m-auto mb-20 block">
+            <div className="gird grid-cols-1 md:grid-cols-2 md:gap-8 md:flex mx-2 md:mt-8 md:mx-4  ">
+                <div className="w-full mt-8 flex items-center justify-center relative">
                     <div className="w-full  overflow-hidden ">
                         <img className=" transition duration-500 ease-in-out transform hover:scale-105 " src={banner1} alt="banner1" />
                     </div>
@@ -16,7 +16,7 @@ function Banner() {
                         <p className="text-sm text-gray-400 font-normal">The Best Look AnyWhere</p>
                     </button>
                 </div>
-                <div className="flex items-center justify-center relative">
+                <div className="w-full flex mt-8 items-center justify-center relative">
                     <div className="w-full  overflow-hidden ">
                         <img className=" transition duration-500 ease-in-out transform hover:scale-105 " src={banner2} alt="banner1" />
                     </div>

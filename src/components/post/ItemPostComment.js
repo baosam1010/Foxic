@@ -4,7 +4,8 @@ import commentAuthor from './../../assets/images/comment-author-3.webp'
 
 function ItemPostComment(props) {
         const {comment} = props
-        const {name,time ,content, img} = comment;
+        const {name ,time ,content, img } = comment;
+        let dtime = time !==''? time.slice(0,15): 'Nov 08 2021'
     return (
         <li key={content} className="flex mt-4">
                     <div className="px-3/12">
@@ -17,7 +18,7 @@ function ItemPostComment(props) {
                       <div className="">
                         <div className="text-xs text-gray-400">
                           <i className="mr-1 far fa-calendar-alt"></i>
-                          <span>{time.slice(0,15)}</span>
+                          <span>{dtime }</span>
                         </div>
                         <h3 className="mt-1 text-18 text-base font-medium">
                           {name}

@@ -10,10 +10,10 @@ import { actAddToCart } from '../../action';
 function NewArrival(props) {
 
     const [isColor, setIsColor] = useState(false);
-    const [isAddToCart, setIsAddToCart] = useState(false);
+    const [isAddToCart] = useState(false);
     const [newLink, setNewLink] = useState('');
     const { setIsModal, setIsProduct } = props;
-    const { onAddToCart, productsList } = props;
+    const { onAddToCart, productsList, wishList, onAddToWishList } = props;
 
     const ratingChanged = (newRating) => {
         console.log("Stars:", newRating);
@@ -122,31 +122,33 @@ function NewArrival(props) {
         return xhtml
     };
 
-    const miniProductLeft = (product,) => {
+    const miniProductLeft = (product) => {
         let xhtml = null;
         xhtml = product.linkProduct.map((itemLink, index) => {
-            if (itemLink === null || itemLink === undefined) {
-                return xhtml = null;
-            } else {
-                index = index + 1;
-                // console.log('itemLink_Left:', itemLink);
-                return xhtml = (
-                    <li key={index} className="mt-3 hover:border-red-500  ">
-                        <a className="w-full h-full" href="/">
-                            <img
-                                className=" w-9 h-9 rounded-full border-2 border-transparent hover:border-indigo-500 "
-                                src={itemLink}
-                                alt={`mini${index}`}
-                                onMouseOver={(e) =>  changeLink(e, product) }
-                                // data-link={itemLink}
-                            />
-                        </a>
-                    </li>
-                )
-            }
-        })
+          if (itemLink === null || itemLink === undefined) {
+            return (xhtml = null);
+          } else {
+            index = index + 1;
+            // console.log('itemLink_Left:', itemLink);
+            return (xhtml = (
+              <li key={index} className="mt-3  md:hover:border-red-500  ">
+                {/* <a className="w-full h-full" href="/"> */}
+                  <img
+                    className=" w-9 h-9 rounded-full border-2 border-transparent hover:border-indigo-500 "
+                    src={itemLink}
+                    alt={`mini${index}`}
+                    onMouseOver={(e) => changeLink(e, product)}
+                    // data-link={itemLink}
+                  />
+                {/* </a> */}
+              </li>
+            ));
+          }
+        });
         return xhtml;
-    };
+      };
+
+
     const showModal = (product) => {
         if (product) {
             setIsModal(true);
@@ -157,99 +159,142 @@ function NewArrival(props) {
     const handleAddToCart = (product) => {
         onAddToCart(product);
     }
-
+    const handleAddToWishList = (product) => {
+        // console.log('WishList_Collection:',product)
+        onAddToWishList(product);
+      };
     const showCollections = (productsList, isColor, isAddToCart) => {
         let xhtml = null;
-
         if (productsList.length > 0) {
-            xhtml = productsList.map((product) => {
-                let nameProduct = product.name.toLowerCase().replace(/ /g, "-");
-                
-                return (
-                    <div key={product.id} className="w-full h-full group mt-8">
-                        <div className="relative w-full ">
-                            <div className="w-full overflow-hidden ">
-                                {changeClothes(product, newLink)}
-                            </div>
-
-                            {/* xem lai cho nay chua lam  (mini color ben phai)*/}
-                            <div className=" absolute top-0 right-0 hidden group-hover:block">
-                                <ul className="">
-                                    <li onClick={() => setIsAddToCart(!isAddToCart)} className="flex items-center justify-center mb-2 rounded-full bg-gray-100  mt-2 w-9 h-9 transform transition duration-500 ease-in-out hover:rotate-360 hover:bg-gray-200">
-                                        <i className={classNames(isAddToCart ? "fas fa-heart" : "far fa-heart")}></i>
-                                    </li>
-                                    <li className="flex items-center justify-center mb-2 rounded-full bg-gray-100  w-9 h-9 transform transition duration-500 ease-in-out hover:rotate-360 hover:bg-gray-200">
-                                        <button onClick={() => { showModal(product) }} >
-                                            <i className="far fa-eye"></i>
-                                        </button>
-                                    </li>
-                                    {miniColorRight(product)}
-
-                                </ul>
-                            </div>
-
-                            {/* status */}
-                            <div className=" absolute left-2 top-2 group-hover:hidden">
-                                {showStatus(product)}
-
-                            </div>
-
-                            {/* mini Product ben trai */}
-                            <div className=" absolute bottom-0 hidden group-hover:block ">
-                                <ul className=" ml-2 transform ">
-                                    {miniProductLeft(product)}
-
-                                </ul>
-                            </div>
-
-                        </div>
-
-                        {/* information product */}
-                        <div className="flex flex-wrap items-center text-center justify-center">
-                            <ReactStars
-                                className=" w-full"
-                                count={5}
-                                onChange={ratingChanged}
-                                size={24}
-                                value={5}
-                                activeColor="#ffd700"
-                            />
-                            <h2 className=" w-full text-sm font-normal text-gray-400">{product.brand}</h2>
-                            <Link className="w-full" to={`/product/${nameProduct}`}>
-                                <h3 className=" w-full mt-1 hover:text-indigo-500 ">{product.name}</h3>
-                            </Link>
-                            <div className="group mt-2 h-10">
-                                <p className="w-full h-full flex flex-nowrap items-center  font-semibold group-hover:hidden">
-                                    <span className={classNames(product.oldPrice === '' || product.oldPrice === null ? 'hidden' : 'block', "line-through mr-2 font-light text-xs ")}>${product.oldPrice}</span>
-                                    <span>${product.price}</span>
-                                </p>
-                                <div className="w-full h-full hidden group-hover:block ">
-                                    <button
-                                        className=" bg-yellow-400 p-1 rounded uppercase text-indigo-500 font-semibold hover:bg-black hover:text-white"
-                                        onClick={() => handleAddToCart(product)}
-                                    >
-                                        add to cart
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
+          xhtml = productsList.map((product) => {
+            let nameProduct = product.name.toLowerCase().replace(/ /g, "-");
+            let index = -1;
+            function findindex(product, wishList) {
+              for (let i = 0; i < wishList.length; i++) {
+                if (wishList[i].id === product.id) {
+                  index = i;
+                  break;
+                }
+              }
+              return index;
+            }
+            index = findindex(product, wishList);
+            // console.log("index:", index)
+            return (
+              <div key={product.id} className="w-full h-full group mt-8">
+                <div className="relative w-full ">
+                  <div className="w-full overflow-hidden ">
+                    {changeClothes(product, newLink)}
+                  </div>
+    
+                  {/* xem lai cho nay chua lam  (mini color ben phai)*/}
+                    <div
+                      onClick={() => handleAddToWishList(product)}
+                      className="md:hidden absolute top-0 right-0 flex items-center justify-center mb-2 rounded-full bg-gray-100  mt-2 w-9 h-9 transform transition duration-500 ease-in-out hover:rotate-360 hover:bg-gray-200"
+                    >
+                      <i
+                        className={classNames(
+                          index !== -1 ? "fas fa-heart" : "far fa-heart"
+                        )}
+                      ></i>
                     </div>
-                );
-            })
-            return xhtml;
+    
+                  <div className=" absolute top-0 right-0 hidden md:group-hover:block">
+                    <ul className="">
+                      <li
+                        onClick={() => handleAddToWishList(product)}
+                        className="flex items-center justify-center mb-2 rounded-full bg-gray-100  mt-2 w-9 h-9 transform transition duration-500 ease-in-out hover:rotate-360 hover:bg-gray-200"
+                      >
+                        <i
+                          className={classNames(
+                            index !== -1 ? "fas fa-heart" : "far fa-heart"
+                          )}
+                        ></i>
+                      </li>
+                      <li className="flex items-center justify-center mb-2 rounded-full bg-gray-100  w-9 h-9 transform transition duration-500 ease-in-out hover:rotate-360 hover:bg-gray-200">
+                        <button
+                          onClick={() => {
+                            showModal(product);
+                          }}
+                        >
+                          <i className="far fa-eye"></i>
+                        </button>
+                      </li>
+                      {miniColorRight(product)}
+                    </ul>
+                  </div>
+    
+                  {/* status */}
+                  <div className=" absolute left-2 top-2 group-hover:hidden">
+                    {showStatus(product)}
+                  </div>
+    
+                  {/* mini Product ben trai */}
+                  <div className="w-full bottom-0 relative  md:absolute   md:hidden md:group-hover:block ">
+                    <ul className=" flex justify-evenly md:flex-col md:justify-around  md:ml-2  ">
+                        {miniProductLeft(product)}
+                    </ul>
+                  </div>
+                </div>
+                   
+                {/* information product */}
+                <div className="flex flex-wrap items-center text-center justify-center">
+                  <ReactStars
+                    className=" w-full"
+                    count={5}
+                    onChange={ratingChanged}
+                    size={24}
+                    value={5}
+                    activeColor="#ffd700"
+                  />
+                  <h2 className=" w-full text-sm font-normal text-gray-400">
+                    {product.brand}
+                  </h2>
+                  <Link className="w-full" to={`/product/${nameProduct}`}>
+                    <h3 className=" w-full mt-1 hover:text-indigo-500 line-clamp-1">
+                      {product.name}
+                    </h3>
+                  </Link>
+                  <div className="group mt-2 h-10">
+                    <p className="w-full h-full hidden md:flex flex-nowrap items-center  font-semibold group-hover:hidden">
+                      <span
+                        className={classNames(
+                          product.oldPrice === "" || product.oldPrice === null
+                            ? "hidden"
+                            : "block",
+                          "line-through mr-2 font-light text-xs "
+                        )}
+                      >
+                        ${product.oldPrice}
+                      </span>
+                      <span>${product.price}</span>
+                    </p>
+                    <div className="w-full h-full md:hidden group-hover:block ">
+                      <button
+                        className=" bg-yellow-400 p-1 rounded uppercase text-indigo-500 font-semibold hover:bg-black hover:text-white"
+                        onClick={() => handleAddToCart(product)}
+                      >
+                        add to cart
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          });
+          return xhtml;
         }
-    };
+      };
 
     return (
-        <div className="max-w-7xl m-auto ">
-            <div className="mt-20 flex flex-wrap items-center text-center ">
+        <div className="max-w-sm md:max-w-7xl m-auto ">
+            <div className="mt-10 md:mt-20 flex flex-wrap items-center text-center">
                 <h1 className="w-full text-3xl mb-3 text-black font-semibold">New Arrival</h1>
                 <p className="w-full flex flex-nowrap justify-center text-gray-500">
                     Hurry up! Limited
                 </p>
             </div>
-            <div className=" grid grid-cols-4 gap-8 mx-4 ">
+            <div className=" grid grid-cols-2 gap-2 mx-2 md:grid-cols-4 md:gap-8 md:mx-4 ">
                 {/* 1 item */}
                 {showCollections(productsList, isColor, isAddToCart)}
 
@@ -258,6 +303,13 @@ function NewArrival(props) {
 
     )
 };
+
+const mapStateToProps = (state) => {
+    return {
+      wishList: state.WishListCart,
+    };
+  };
+  
 const mapDispatchToProps = (dispatch, props) => {
     return {
         onAddToCart: (product) => {
@@ -267,6 +319,6 @@ const mapDispatchToProps = (dispatch, props) => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(NewArrival);
+export default connect(mapStateToProps, mapDispatchToProps)(NewArrival);
 
 
