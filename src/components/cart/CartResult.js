@@ -16,20 +16,20 @@ function CartResult(props) {
 
     return (
         <tr className="text-center align-middle ">
-            <td colSpan="2"></td>
-            <td>
+            <td className="hidden border lg:block" colSpan="2"></td>
+            <td className="border">
                 <h4>
                     <strong>Total Price</strong>
                 </h4>
             </td>
-            <td className="">
+            <td className="border">
                 <h4>
                     <strong>{showTotalAmount(cart)}</strong>
                 </h4>
             </td>
-            <td colSpan="3">
-                <button className="px-2 py-2 font-medium rounded bg-yellow-400 hover:text-white hover:bg-black">
-                    Confirm Buy Product 
+            <td className="border" colSpan="3">
+                <button className="px-2 py-2 lg:flex font-medium rounded bg-yellow-400 hover:text-white hover:bg-black">
+                    Confirm <span className="hidden lg:block">Buy Product </span>
                 </button>
             </td>
 

@@ -100,49 +100,13 @@ function ProductPage(props) {
         prevArrow: <PrevArrow1 />
     };
 
-    // function NextArrow(props) {
-    //     const { className, style, onClick } = props;
-    //     return (
-    //         <button
-    //             className={className}
-    //             style={{
-    //                 ...style, display: "block", position: 'absolute', right: 0, 
-    //                 zIndex: 2, transform: "translate(0%,-50%)"
-    //             }}
-    //             onClick={onClick}
-    //         > {`<`}</button>
-    //     );
-    // };
-
-    // function PrevArrow(props) {
-    //     const { className, style, onClick } = props;
-    //     return (
-    //         <button
-    //             className={className}
-    //             style={{
-    //                 ...style, display: "block", position: 'absolute', left: 0, background: "red",
-    //                 transform: "translate(0%,-50%)", zIndex: 2
-    //             }}
-    //             onClick={onClick}
-    //         >{`>`}</button>
-    //     );
-    // };
-
-    // const settingArrow = {
-    //     nextArrow: <NextArrow />,
-    //     prevArrow: <PrevArrow />
-    // };
+    
     const next = () => {
         slider.slickNext();
     };
     const previous = () => {
         slider.slickPrev();
     };
-
-    // useEffect(() => {
-    //     setNav1(slider1)
-    //     setNav2(slider2)
-    // }, []);
 
     function CustomSlide(props) {
         const { index, item: product, } = props
@@ -157,36 +121,7 @@ function ProductPage(props) {
             </div>
         )
     };
-
-    // const showSlide = (product) => {
-    //     let result = null;
-    //     let arrSlide = [...product.linkProduct, ...product.linkProductColor]
-    //     result = arrSlide.map((item, index) => {
-    //         return (
-    //             <div key={product.name} className="w-full h-5/6  flex items-center bg-green-300">
-    //                 <img className="w-full object-cover" src={item} alt={`slide${index}`} />
-    //             </div>)
-    //     })
-    //     return result;
-    // };
-    // function Slide2Top(props){
-    //     const { index, item} = props
-    //     return (
-    //         <div key={item} className="px-2">
-    //                 <img className="w-full object-cover" src={item} alt={`slide${index}`} />
-    //         </div>
-    //     );
-    // };
-
-    // const showSlide2 = (product) => {
-    //     let result = null;
-    //     let arrSlide = [...product.linkProduct, ...product.linkProductColor]
-    //     result = arrSlide.map((item, index) => {
-    //         return <Slide2Top key={item.name} item={item} index={index} />
-    //     })
-    //     return result;
-    // };
-
+    
     const showProductSlide = (products) => {
         let result = null;
         // console.log("products:", products)
@@ -244,29 +179,7 @@ function ProductPage(props) {
                     <div className="grid grid-cols-12 gap-4">
                         <div className="col-span-6">
                             <CarouselOverLay key= {product[0].name} product={product[0]}/>
-                            {/* <div className="">
-                                <Slider
-                                    asNavFor={nav2}
-                                    ref={slider => (slider1 = slider)}
-                                    {...settingArrow}
-                                >
-                                    {showSlide(product[0])}
-                                </Slider>
-                            </div>
-                            <div className={classNames(product.linkimg.length >= 3 ? 'block' : 'hidden', "mt-2")}>
-                                <Slider
-                                    className="-mx-2"
-                                    asNavFor={nav1}
-                                    ref={slider => (slider2 = slider)}
-                                    slidesToShow={3}
-                                    swipeToSlide={true}
-                                    focusOnSelect={true}
-                                    {...settingArrow}
-                                >
-                                    {showSlide2(product[0])}
-                                </Slider>
-                            </div> */}
-
+                            
                         </div>
 
                         <div className="col-span-6">

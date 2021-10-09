@@ -20,7 +20,7 @@ function Footer() {
                     </li>
                     <li className="flex items-center justify-center px-4 py-2 md:py-12  ">
                         <div className="mr-4 ">
-                            <i className="text-5xl md:text-7xl fas fa-coins"></i>
+                            <i className="text-5xl mr-3 lg:mr-0 md:text-7xl fas fa-coins"></i>
                         </div>
                         <div>
                             <h4 className="text-base font-semibold">Best price</h4>
@@ -31,7 +31,7 @@ function Footer() {
                     </li>
                     <li className="flex items-center justify-center px-4 py-2 md:py-12 ">
                         <div className="mr-4 ">
-                            <i className="text-5xl md:text-7xl far fa-file-alt"></i>
+                            <i className="text-5xl mr-6 lg:mr-0 md:text-7xl far fa-file-alt"></i>
                         </div>
                         <div>
                             <h4 className="text-base font-semibold">Guarantee</h4>

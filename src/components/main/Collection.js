@@ -167,6 +167,8 @@ function Collection(props) {
                 src={itemLink}
                 alt={`mini${index}`}
                 onMouseOver={(e) => changeLink(e, product)}
+                onClick={(e) => changeLink(e, product)}
+
                 // data-link={itemLink}
               />
             {/* </a> */}

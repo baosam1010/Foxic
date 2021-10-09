@@ -1,8 +1,9 @@
 
 const express = require('express')
-const app = express()
-const port =process.env.post || 5000
-const favicon = require('./../public/favicon.ico')
+const app = express();
+var serverPort = 8080;
+const port = process.env.post || serverPort;
+const favicon = require('../public/favicon.ico');
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
