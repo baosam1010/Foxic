@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { useState } from "react";
 import ReactStars from "react-rating-stars-component";
-import { actAddToCart, actAddToWishList } from "../../action";
+import { actAddToCart, actAddToWishList, actHideToast, actShowToast } from "../../action";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -202,7 +202,7 @@ function Collection(props) {
   const showCollections = (productsList, isColor, isAddToCart) => {
     let xhtml = null;
     if (productsList.length > 0) {
-      xhtml = productsList.map((product) => {
+      xhtml = productsList.map((product, i) => {
         let nameProduct = product.name.toLowerCase().replace(/ /g, "-");
         let index = -1;
         function findindex(product, wishList) {
@@ -217,7 +217,7 @@ function Collection(props) {
         index = findindex(product, wishList);
         // console.log("index:", index)
         return (
-          <div key={product.id} className="w-full h-full group mt-8">
+          <div key={product.id} className={classNames(i >= 3 ? "md:col-start-2  lg:col-span-1" :"","w-full col-span-1 h-full group mt-8")}>
             <div className="relative w-full ">
               <div className="w-full overflow-hidden ">
                 {changeClothes(product, newLink)}
@@ -323,7 +323,7 @@ function Collection(props) {
   };
 
   return (
-    <div className="max-w-sm md:max-w-7xl m-auto ">
+    <div className="max-w-7xl m-auto ">
       <div className="mt-10 md:mt-20 flex flex-wrap items-center text-center ">
         <h1 className="w-full text-3xl mb-3 text-black font-semibold">
           Collection
@@ -342,9 +342,9 @@ function Collection(props) {
           </li>
         </ul>
       </div>
-      <div className=" grid grid-cols-2 gap-2 mx-2 md:grid-cols-4 md:gap-8 md:mx-4 ">
+      <div className=" grid grid-cols-2 gap-2 mx-2 md:grid-cols-3 md:gap-4 lg:grid-cols-4 sm;mx-auto ">
         {/* 1 item */}
-        {showCollections(productsList, isColor, isAddToCart)}
+          {showCollections(productsList, isColor, isAddToCart)}
       </div>
     </div>
   );
@@ -360,10 +360,15 @@ const mapDispatchToProps = (dispatch, props) => {
   return {
     onAddToCart: (product) => {
       dispatch(actAddToCart(product, 1));
+      dispatch(actShowToast("Add Product Sucess"))
+      setTimeout(()=>{
+        dispatch(actHideToast(""));
+      },1500)
     },
     onAddToWishList: (product) => {
       dispatch(actAddToWishList(product));
     },
+    
   };
 };
 

@@ -14,7 +14,7 @@ function WishList(props) {
     const [isModal, setIsModal] = useState(false);
     const [isProduct, setIsProduct] = useState(null);
     let num = products.length;
-    console.log('products_Wishist', products)
+    // console.log('products_Wishist', products)
 
     const handleAddToCart = (product) => {
         onAddToCart(product);
@@ -45,7 +45,7 @@ function WishList(props) {
                         // console.log('vao 1')
                         return (
                             <Link to={`/product/${nameProduct}`}>
-                                <img key={product.id} className=" transform hover:scale-105 "
+                                <img  key={product.id} className="w-full object-cover transform lg:hover:scale-105 "
                                     src={linkImageClothes}
                                     alt="clothes"
                                 />
@@ -174,7 +174,7 @@ function WishList(props) {
 
 
                 return (
-                   <div key={product.name} className=" col-span-4 border-1 rounded">
+                   <div key={product.name} className="col-span-1 border-1 rounded">
                         <div key={product.id} className="w-full h-full group">
                         <div className="relative w-full ">
                             <div className="w-full overflow-hidden ">
@@ -182,7 +182,7 @@ function WishList(props) {
                             </div>
 
                             {/* xem lai cho nay chua lam  (mini color ben phai)*/}
-                            <div className=" absolute top-0 right-0 hidden group-hover:block">
+                            <div className=" absolute top-0 right-0 block sm:hidden sm:group-hover:block">
                                 <ul className="">
                                     <li onClick={() => handleDeleteToWishList(product)} className="flex items-center justify-center mb-2 rounded-full bg-gray-100  mt-2 w-9 h-9 transform transition duration-500 ease-in-out hover:rotate-360 hover:bg-gray-200">
                                         <i className="fas fa-trash-alt"></i>
@@ -227,11 +227,11 @@ function WishList(props) {
                                 <h3 className=" w-full mt-1 hover:text-indigo-500 ">{product.name}</h3>
                             </Link>
                             <div className="group mt-2 h-10">
-                                <p className="w-full h-full flex flex-nowrap items-center  font-semibold group-hover:hidden">
+                                <p className="hidden  w-full h-full md:flex flex-nowrap items-center  font-semibold group-hover:hidden">
                                     <span className={classNames(product.oldPrice === '' || product.oldPrice === null ? 'hidden' : 'block', "line-through mr-2 font-light text-xs ")}>${product.oldPrice}</span>
                                     <span>${product.price}</span>
                                 </p>
-                                <div className="w-full h-full hidden group-hover:block ">
+                                <div className=" w-full h-full md:hidden group-hover:block ">
                                     <button
                                         className=" bg-yellow-400 p-1 rounded uppercase text-indigo-500 font-semibold hover:bg-black hover:text-white"
                                         onClick={() => handleAddToCart(product)}
@@ -261,8 +261,8 @@ function WishList(props) {
 
     return (
         <div className="w-full">
-            <h2 className="text-3xl font-semibold mb-7">My WishList</h2>
-            <div className={classNames(num === 0 ? 'block': 'hidden',"mt-2")}>
+            <h2 className="w-full text-3xl font-semibold mb-7 ">My WishList</h2>
+            <div className={classNames(num === 0 ? 'block': 'hidden',"w-full mt-2")}>
                 <h3 className="text-2xl font-medium mb-3">Don't Have Product in Your WishList</h3>
                 <Link 
                     to="/"
@@ -271,7 +271,7 @@ function WishList(props) {
                     Add More...
                 </Link>
             </div>
-            <div className="grid grid-cols-12 gap-4">
+            <div className="w-full grid  sm:grid-cols-2 gap-2  lg:grid-cols-3 lg:gap-4">
                 {showWishList(products)}
             </div>
             <Overlay isModal={isModal} setIsModal={handleSetIsModal} isProduct={isProduct} />

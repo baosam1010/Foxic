@@ -6,16 +6,16 @@ function MainSlider() {
     return (
         <div className="max-w-full">
             <div id="carouselExampleInterval" className="carousel slide " data-bs-ride="carousel">
-                <div className="carousel-inner h-40 md:h-500">
-                    <div className="carousel-item active transition duration-500 ease-linear " data-bs-interval="4000">
-                        <img className=" object-cover" src={slider2} alt="slider1" />
+                <div className="carousel-inner h-80 md:h-500">
+                    <div className="carousel-item w-full h-full active transition duration-500 ease-linear " data-bs-interval="4000">
+                        <img className=" object-cover  w-full h-full" src={slider2} alt="slider1" />
                     </div>
-                    <div className="carousel-item transition duration-500 ease-linear " data-bs-interval="2000" >
-                        <img className="object-cover" src={slider1} alt="slider2" />
+                    <div className="carousel-item  w-full h-full transition duration-500 ease-linear " data-bs-interval="2000" >
+                        <img className="object-cover  w-full h-full" src={slider1} alt="slider2" />
                     </div>
-                    <div className="carousel-item transition duration-500 ease-linear " data-bs-interval="10000">
-                        <video className="object-cover" loop preload="auto" muted autoPlay>
-                            <source src={slider3} type="video/mp4" />
+                    <div className="carousel-item   w-full h-full transition duration-500 ease-linear " data-bs-interval="10000">
+                        <video className="object-cover  w-full h-full" loop preload="auto" muted autoPlay>
+                            <source className="object-cover w-full h-full" src={slider3} type="video/mp4" />
                         </video>
                     </div>
                 </div>

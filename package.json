@@ -22,14 +22,16 @@
     "react-scripts": "4.0.3",
     "react-slick": "^0.28.1",
     "redux": "^4.1.1",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.3.0",
     "slick-carousel": "^1.8.1",
     "tailwind-scrollbar-hide": "^1.0.3",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
     "start": "craco start",
-     "build": "craco build",
-     "test": "craco test",
+    "build": "react-scripts build",
+    "test": "craco test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

@@ -5,7 +5,7 @@ import banner2 from './../../assets/images/banner-fashion-2-04.webp';
 
 function Banner() {
     return (
-        <div className="max-w-sm md:max-w-7xl m-auto mb-20 block">
+        <div className="max-w-7xl m-auto mb-20 block">
             <div className="gird grid-cols-1 md:grid-cols-2 md:gap-8 md:flex mx-2 md:mt-8 md:mx-4  ">
                 <div className="w-full mt-8 flex items-center justify-center relative">
                     <div className="w-full  overflow-hidden ">

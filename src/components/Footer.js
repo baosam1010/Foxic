@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 
 function Footer() {
     return (
-        <div className="max-w-full md:max-w-full bg-yellow-400 ">
+        <div className="max-w-full bg-yellow-400 ">
             <div className="bg-black">
                 <ul className="max-w-7xl  m-auto  text-white grid grid-cols-1 md:grid-cols-3 ">
                     <li className="flex items-center justify-center px-4 py-2 md:py-12  ">

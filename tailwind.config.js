@@ -26,7 +26,10 @@ module.exports = {
       },
       translate:{
         '125/100': '125%',
-        '18': '72px'
+        '18': '72px',
+        '7/30':'29px',
+        '11/46':'46px'
+
       },
       borderWidth:{
         '1': '1px'
@@ -47,7 +50,10 @@ module.exports = {
       },
       width:{
         '110':'110px',
-        '7-30':'30px'
+        '7-30':'30px',
+        '26':'106px',
+        '90vw':'90vw',
+        '40vw':'40vw',
       },
       leading:{
         '42':'42px',
@@ -61,7 +67,9 @@ module.exports = {
       marginRight: ['last'],
       appearance: ['hover', 'focus'],
       margin:['first', 'last'],
-      border:['acive','hover','focus','target']
+      border:['acive','hover','focus','target'],
+      borderWidth: ['first'], 
+      padding:['responsive']
     },
 
   },

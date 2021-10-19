@@ -6,7 +6,8 @@ import { Link } from "react-router-dom";
 import { actDeleteProductInCart, actUpdateProductInCart } from "../action";
 
 function CartPage(props) {
-  const { cart } = props;
+  const { cart, inforAccount } = props;
+  console.log("inforAccount1245:", inforAccount)
   const cartNum = cart.length;
 
   const showCartItem = (cart) => {
@@ -37,49 +38,51 @@ function CartPage(props) {
   };
 
   return (
-    <div className=" max-w-7xl my-10 mx-2 lg:mx-auto lg:m-20">
-      <h2 className="mb-4 text-2xl font-semibold text-indigo-500">
+    <div className="max-w-full my-10 px-2 md:mx-auto lg:max-w-7xl ">
+      <h2 className="mb-4 text-2xl mt-10 lg:mt-20 font-semibold text-indigo-500">
         Product List
       </h2>
-      <div className="mb-4">
-        <h3
-          className={classNames(
-            cartNum > 0 ? "hidden" : "block",
-            "text-lg font-medium  mb-2"
-          )}
-        >
-          No product in your Cart!!!
-        </h3>
-        <Link
-          to="/"
-          className="px-2 py-2 font-medium rounded bg-yellow-400 hover:text-white hover:bg-black"
-        >
-          Add Product!!!
-        </Link>
-      </div>
+      {inforAccount.length > 0 ? (
+        <div className="mb-4">
+          <h3
+            className={classNames(
+              cartNum > 0 ? "hidden" : "block",
+              "text-lg font-medium  mb-2"
+            )}
+          >
+            No product in your Cart!!!
+          </h3>
+          <Link
+            to="/"
+            className="px-2 py-2 font-medium rounded bg-yellow-400 hover:text-white hover:bg-black"
+          >
+            Add Product!!!
+          </Link>
+        </div>
+      ): <span className="text-lg font-medium">Please Login to continue</span>
+      
+      }
+
+
       <div
         className={classNames(
           cartNum > 0 ? "block" : "hidden",
-          "table w-full border-collapse border rounded"
+          "table w-full  border-collapse border rounded"
         )}
       >
         <div className="table-row-group">
           <div className="table-row text-center">
-            <th className="hidden border lg:block text-xl font-semibold">#</th>
-            <th className="border">Name</th>
-            <th className="border">Quantity</th>
-            <th className="hidden border lg:block">Price/Unit (USD)</th>
-            <th className="hidden border lg:block">Prices</th>
-            <th className="border">Delete Product</th>
+            <div className="hidden md:table-cell border text-lg font-medium">STT</div>
+            <div className="table-cell border text-lg font-medium">Name</div>
+            <div className="table-cell border text-lg font-medium">Quantity</div>
+            <div className="hidden md:table-cell border text-lg font-medium">Price/Unit (USD)</div>
+            <div className="table-cell border text-lg font-medium">Prices</div>
+            <div className="table-cell border text-lg font-medium">Delete Product</div>
           </div>
 
-          <div className="table-row">
-            {showCartItem(cart)}
-            {/* <CartResult products={cart} /> */}
-          </div>
-          <div className="table-row">
-            {showCartResult(cart)}
-          </div>
+          {showCartItem(cart)}
+
+          {showCartResult(cart)}
         </div>
       </div>
     </div>
@@ -89,6 +92,7 @@ function CartPage(props) {
 const mapStateToProps = (state) => {
   return {
     cart: state.Cart,
+    inforAccount: state.AccountReducer
   };
 };
 

@@ -77,7 +77,7 @@ function PostsList(props) {
             to={`/ourpost/${post.name}`}
           >
             <img
-              className="transform hover:scale-105 "
+              className="w-full object-cover transform hover:scale-105 "
               src={post.image}
               alt="post1"
             />
@@ -102,7 +102,7 @@ function PostsList(props) {
         <ul className="hidden w-full md:grid grid-cols-3 gap-4">
           {posts.map((post) => showPost(post))}
         </ul>
-        <div className="w-full md:hidden">
+        <div className="w-full  md:hidden">
           <Slider {...settings}>{showslide(posts)}</Slider>
         </div>
       </div>

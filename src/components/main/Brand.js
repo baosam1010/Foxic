@@ -8,8 +8,8 @@ import brand6 from './../../assets/images/brand-fashion-06.webp';
 
 function Brand() {
     return (
-        <div className="max-w-sm md:max-w-7xl m-auto ">
-            <ul className="mt-20 grid grid-cols-2  md:grid-cols-6 md:px-4 ">
+        <div className="max-w-7xl m-auto ">
+            <ul className="mt-20 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-3 md:gap-4 ">
                 <li>
                     <a href="/">
                         <img className="max-w-full" src={brand6} alt="brand6" />

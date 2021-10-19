@@ -9,6 +9,7 @@ import TrendSummer from "./TrendSummer";
 import { connect } from "react-redux";
 import Overlay from "./overlay/Overlay";
 import { actAddToCart, actAddToWishList } from "../../action";
+import LoadingGlobal from "../LoadingGlobal";
 
 function Main(props) {
   const { match, Products, wishList, onAddToCart, onAddToWishList } = props;
@@ -60,7 +61,7 @@ function Main(props) {
         onAddToWishList={handleAddToWishList}
 
       />
-      
+      <LoadingGlobal />
     </div>
   );
 }

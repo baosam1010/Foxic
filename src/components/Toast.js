@@ -1,35 +1,22 @@
 import React from 'react';
 import classNames from 'classnames';
-import mesImg from './../assets/images/product-01-1.webp'
+import { connect } from 'react-redux';
+import { actHideToast } from '../action';
 
 function Toast(props) {
     // console.log(props)   
-    const {isOpen,setIsOpen} = props;
-
+    const {isToast, onHideToast} = props;
+    console.log("isToast:", isToast.showToast)
     function closeToast (e){
-        let  event = e.target;
-        if(setIsOpen){
-            setIsOpen(event)
+        if(e){
+            onHideToast('')
         }
     }
     return (
-        <div className={classNames(isOpen  ? 'block' : 'hidden',"border-2 fixed bg-white bottom-8 left-8 w-80 flex flex-row  z-100 rounded ")} >
-            <img
-                className="w-20 h-20 mr-2"
-                src={mesImg}
-                alt="product"
-            />
-            <div className="relative flex flex-col h-full">
-                <p className="text-xs mt-2">This is a very simple</p>
-                <h3 className="text-sm font-medium my-2">
-                    <a href="/" >Leather Sneakers</a>
-                </h3>
-                <div className="text-sm">
-                    <span className="text-green-400 text-sm">3 minutes ago </span>
-                    <span className="text-xs">from Aden Morako </span>
-                    <i className="far fa-eye text-sm ml-2"></i>
+        <div className={classNames(isToast.showToast === true  ? 'block' : 'hidden',"fixed bottom-16 left-8 w-80 bg-green-300 flex flex-row  z-40 rounded ")} >
 
-                </div>
+            <div className="text-center  h-full">
+                <p className="text-lg mt-2 mr-2 pl-2 pb-2 text-white">{isToast.message}</p>
             </div>
             <button onClick={(e)=> closeToast(e)}  className="absolute top-0 right-0 mr-2">
                 <i className="fas fa-times"></i>
@@ -37,5 +24,16 @@ function Toast(props) {
         </div>
     )
 }
-
-export default Toast
+const mapStateToProps = (state)=>{
+    return {
+            isToast: state.Toast
+    }
+};
+const mapDispatchToProps = (dispatch, props)=>{
+    return {
+        onHideToast : (message)=>{
+            dispatch(actHideToast(message))
+        }
+    }
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Toast)

@@ -20,6 +20,18 @@ export const ADD_TO_COMMENT = 'ADD_TO_COMMENT';
 // export const DELETE_PRODUCT_IN_COMMENT = 'DELETE_PRODUCT_IN_COMMENT';
 // export const UPDATE_PRODUCT_IN_COMMENT = 'UPDATE_PRODUCT_IN_COMMENT';
 
+// Login and Logout
+export const SAVE_USERS = 'SAVE_USERS';
+export const LOGIN = 'LOGIN';
+export const LOGOUT = 'LOGOUT';
+export const REGISTER = 'REGISTER';
+// Show LoadingGlobal
+export const SHOW_LOADING = 'SHOW_LOADING';
+export const HIDE_LOADING = 'HIDE_LOADING';
+
+// Toast
+export const SHOW_TOAST = 'SHOW_TOAST';
+export const HIDE_TOAST = 'HIDE_TOAST';
 
 
 

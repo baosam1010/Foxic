@@ -28,7 +28,7 @@ function ButtonTop() {
 
 
     return (
-        <div  className="fixed bottom-10 md:bottom-32 right-6 z-10 ">
+        <div  className="fixed bottom-32 right-6 z-10 ">
             <button id="myBtn" onClick={topFunction} type="button" className={classNames(showTop ? "block" : "hidden","rounded-full bg-gray-300 w-16 h-16 text-white hover:bg-indigo-500")} >
                 <i className="text-2xl fas fa-chevron-up"></i>
             </button>

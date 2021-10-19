@@ -23,19 +23,19 @@ export const Routes = [
     },
     {
         path: '/account',
-        exact: false,
-        component: WishListPage,
+        exact: true,
+        component: ({ match, }) => <WishListPage match={match} />
     },
-    // {
-    //     path: '/account.addresses',
-    //     exact: false,
-    //     component: Addresses,
-    // },
-    // {
-    //     path: '/account/wishlist',
-    //     exact: false,
-    //     component: WishList,
-    // },
+    {
+        path: '/account/addresses',
+        exact: false,
+        component: ({ match, }) => <WishListPage match={match} />
+    },
+    {
+        path: '/account/wishlist',
+        exact: false,
+        component: ({ match, }) => <WishListPage match={match} />
+    },
     {
         path: '/product/:slug',
         exact: false,

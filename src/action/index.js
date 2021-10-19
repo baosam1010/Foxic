@@ -65,5 +65,62 @@ export const actAddToComment = (comment ) => {
     }
 };
 
+// ACTION Save Users
+export const actSaveUsers = (users ) => {
+    return {
+        type: Types.SAVE_USERS,
+        users,    
+    }
+};
+
+export const actRegister = (details ) => {
+    return {
+        type: Types.REGISTER,
+        details,    
+    }
+};
+// Login and Logout
+export const actLogin = (user ) => {
+    return {
+        type: Types.LOGIN,
+        user,    
+    }
+};
+export const actLogout = ( ) => {
+    return {
+        type: Types.LOGOUT,
+   
+    }
+};
+
+// ACTION SHOW_LOADING
+export const actShowLoading = ( ) => {
+    return {
+        type: Types.SHOW_LOADING,
+    }
+}
+export const actHideLoading = ( ) => {
+    return {
+        type: Types.HIDE_LOADING,
+    }
+}
+
+// action SHOW and HIDE Toast
+
+export const actShowToast = (message) => {
+    return {
+        type: Types.SHOW_TOAST,
+        message
+    }
+}
+export const actHideToast = (message) => {
+    return {
+        type: Types.HIDE_TOAST,
+        message,
+        
+    }
+}
+
+
 
 

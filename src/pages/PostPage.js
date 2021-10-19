@@ -12,10 +12,11 @@ import PostSlide from "../components/post/PostSlide";
 import { actAddToComment } from "../action";
 import { useState } from "react";
 import ItemPostComment from "../components/post/ItemPostComment";
+import classNames from "classnames";
 
 function PostPage(props) {
   let dTime = new Date(Date.now());
-  const { match, posts, onAddCommentPost, comments } = props;
+  const { match, posts, onAddCommentPost, comments, inforAccount } = props;
   const url = match.url.slice(9);
 
   const [comment, setComment] = useState({
@@ -30,7 +31,12 @@ function PostPage(props) {
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
-    setComment({ ...comment });
+    if(inforAccount.length > 0) {
+
+      setComment({ ...comment, name:inforAccount[0].username, email: inforAccount[0].email });
+    }else{
+      setComment({ ...comment });
+    }
     // console.log("commentADD:", comment);
     onAddCommentPost(comment);
   };
@@ -43,7 +49,7 @@ function PostPage(props) {
     })
     result = arrComments.map((item, index) => {
         return (
-            <ItemPostComment key={item.content} comment={item} />
+            <ItemPostComment key={item.content + index} comment={item} />
         )
     })
 
@@ -231,7 +237,7 @@ function PostPage(props) {
             <div className="mt-10">
               <h2 className="text-2xl font-semibold ">Post Comments</h2>
               <div className="mt-7/30">
-                <ul className="cmtList">
+                <ul v-for="item in items" className="first:mt-7 ">
                   <li className="flex ">
                     <div className="px-3/12">
                       <div className="w-110">
@@ -270,25 +276,25 @@ function PostPage(props) {
               </h2>
               <form onSubmit={(e) => handleSubmitForm(e)}>
                 <div className="w-full mt-2 grid grid-cols-2 gap-4 mb-4">
-                  <div className="col-span-1 ">
+                  <div className={classNames(inforAccount.length> 0 ? "hidden" : "block","col-span-1 ")}>
                     <input
                       className="border-1 rounded px-3 py-3 w-full  focus:border-red-300 outline-none bg-gray-50 "
                       placeholder="Name"
                       type="text"
                       name="name"
-                      required
+                      required={inforAccount.length>0?false:true}
                       value={comment.name}
                       onChange={(e) =>
                         setComment({ ...comment, name: e.target.value })
                       }
                     />
                   </div>
-                  <div className="col-span-1">
+                  <div className={classNames(inforAccount.length > 0 ? "hidden" : "block" , "col-span-1")}>
                     <input
                       className="border-1 rounded px-3 py-3 w-full  focus:border-red-300 outline-none bg-gray-50 "
                       placeholder="Email"
                       type="email"
-                      required
+                      required={inforAccount.length>0?false:true}
                       name="email"
                       value={comment.email}
                       onChange={(e) =>
@@ -339,6 +345,7 @@ const mapStateToProps = (state) => {
     posts: state.Posts,
     account: state.AccountReducer,
     comments: state.Comments,
+    inforAccount: state.AccountReducer
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(PostPage);

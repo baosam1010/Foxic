@@ -3,7 +3,7 @@ import bannerfull from './../../assets/images/banner-fashion2-full.webp';
 
 function TrendSummer() {
     return (
-        <div className="max-w-sm md:max-w-7xl m-auto px-2">
+        <div className="max-w-7xl m-auto px-2">
             <div className="mt-20 w-full h-64 md:h-500 overflow-hidden relative ">
                 <img className="absolute object-cover h-full w-full transform transition duration-500 ease-in-out hover:scale-105" 
                     src={bannerfull} 
