@@ -13,7 +13,7 @@ import SizeGuide from "../components/product/SizeGuide";
 import Delivery from "../components/product/Delivery";
 import ContentHeaderProduct from "../components/product/ContentHeaderProduct";
 import CarouselOverLay from "../components/main/overlay/CarouselOverLay";
-import FooterProductPage from "../components/product/FooterProductPage";
+// import FooterProductPage from "../components/product/FooterProductPage";
 
 function ProductPage(props) {
   const { Products, onAddToCart } = props;
