@@ -1,47 +1,3 @@
-import productLink10 from './../assets/images/product-01-1.webp';
-import productLink11 from './../assets/images/product-01-2.webp';
-import productLink12 from './../assets/images/product-01-3.webp';
-import productLink13 from './../assets/images/product-01-color-2.webp';
-
-import productLink20 from './../assets/images/product-02-1.webp';
-import productLink21 from './../assets/images/product-02-2.webp';
-import productLink22 from './../assets/images/product-02-3.webp';
-import productLink23 from './../assets/images/product-02-color-2.webp';
-import productLink24 from './../assets/images/product-02-color-3.webp';
-
-
-import productLink30 from './../assets/images/product-03-1.webp';
-import productLink31 from './../assets/images/product-03-2.webp';
-import productLink32 from './../assets/images/product-03-3.webp';
-
-import productLink40 from './../assets/images/product-04-1.webp';
-import productLink41 from './../assets/images/product-04-2.webp';
-import productLink42 from './../assets/images/product-04-3.webp';
-
-import productLink60 from './../assets/images/product-06-1.webp';
-// import productLink61 from './../assets/images/product-06-2.webp';
-import productLink62 from './../assets/images/product-06-3.webp';
-// import productLink63 from './../assets/images/product-06-color-2.webp';
-// import productLink64 from './../assets/images/product-06-color-3.webp';
-
-import productLink100 from './../assets/images/product-10-1.webp';
-
-import productLink130 from './../assets/images/product-13-1.webp';
-
-import productLink160 from './../assets/images/product-16-1.webp';
-import productLink161 from './../assets/images/product-16-2.webp';
-import productLink162 from './../assets/images/product-16-3.webp';
-// import productLink163 from './../assets/images/product-16-color-2.webp';
-
-
-import productLink210 from './../assets/images/product-21-1.webp';
-import productLink211 from './../assets/images/product-21-2.webp';
-
-import productLink250 from './../assets/images/product-25-1.webp';
-import productLink251 from './../assets/images/product-25-2.webp';
-import productLink252 from './../assets/images/product-25-3.webp';
-
-
 
 // import * as Types from './../constants/ActionType';
 
@@ -52,19 +8,23 @@ var initialState = data ? data : [
             {
                 id: 1,
                 linkProduct: [
-                    productLink10,
-                    productLink11,
-                    productLink12,
+                    "https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-01-1.webp",
+                    "https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-01-2.webp",
+                    "https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-01-3.webp"
 
                 ],
                 linkProductColor: [
-                    productLink10,
-                    productLink13,
+                    "https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-01-1.webp",
+                    "https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-01-color-2.webp",
+                    "https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-01-color-3.webp"
+
 
                 ],
                 color: [
-                    'bg-yellow-400',
-                    'bg-black',
+                    "bg-yellow-400",
+                    "bg-black",
+                    "bg-red-600"
+
                 ],
                 brand: 'Foxic',
                 name: 'Leather Pegged Pants',
@@ -76,19 +36,22 @@ var initialState = data ? data : [
             {
                 id: 2,
                 linkProduct: [
-                    productLink20,
-                    productLink21,
-                    productLink22,
+                    "https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-02-1.webp",
+                    "https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-02-2.webp",
+                    "https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-02-3.webp"
+
                 ],
                 linkProductColor: [
-                    productLink20,
-                    productLink23,
-                    productLink24,
+                    "https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-02-1.webp",
+                    "https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-02-color-2.webp",
+                    "https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-02-color-3.webp"
+                     
+                   
                 ],
                 color: [
-                    'bg-red-500',
-                    'bg-red-400',
-                    'bg-yellow-300',
+                    "bg-red-500",
+                    "bg-red-400",
+                    "bg-yellow-300"
                 ],
                 brand: 'Iconic',
                 name: 'Oversize Cotton Dress',
@@ -100,13 +63,13 @@ var initialState = data ? data : [
             {
                 id: 3,
                 linkProduct: [
-                    productLink30,
-                    productLink31,
-                    productLink32,
+                    "https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-03-1.webp",
+                    "https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-03-2.webp",
+                    "https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-03-3.webp"
                 ],
                 linkProductColor: [],
                 color: [],
-                brand: 'Banita',
+                brand: "Banita",
                 name: 'Oversized Cotton Blouse',
                 price: 180,
                 oldPrice: 200,
@@ -116,9 +79,9 @@ var initialState = data ? data : [
             {
                 id: 4,
                 linkProduct: [
-                    productLink40,
-                    productLink41,
-                    productLink42,
+                    "https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-04-1.webp",
+                    "https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-04-2.webp",
+                    "https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-04-3.webp"
                 ],
                 linkProductColor: [],
                 color: [],
@@ -132,11 +95,11 @@ var initialState = data ? data : [
         ],
         ProductArrival :[
             {
-                id: 1,
+                id: 5,
                 linkProduct: [
-                    productLink30,
-                    productLink31,
-                    productLink32,
+                    'https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-03-1.webp',
+                    'https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-03-2.webp',
+                    'https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-03-3.webp',
                 ],
                 linkProductColor: [
                 ],
@@ -151,19 +114,22 @@ var initialState = data ? data : [
                 status: 'new',
             },
             {
-                id: 2,
+                id: 6,
                 linkProduct: [
-                    productLink60,
-                    // productLink61,
-                    productLink62,
+                    'https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-06-1.webp',
+                    'https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-06-2.webp',
+                    'https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-06-3.webp',
                 ],
                 linkProductColor: [
-        
+                    'https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-06-1.webp',
+                    'https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-06-color-2.webp',
+                    'https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-06-color-3.webp',
+                    
                 ],
                 color: [
-                    'bg-gray-400',
-                    'bg-green-400',
-                    'bg-black',
+                    "bg-gray-400",
+                    "bg-green-400",
+                    "bg-black"
                 ],
                 brand: 'Foxic',
                 name: 'Midi Dress with Belt',
@@ -173,17 +139,18 @@ var initialState = data ? data : [
                 status: '',
             },
             {
-                id: 3,
+                id: 7,
                 linkProduct: [
-                    productLink100,
+                    "https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-10-1.webp",
+                    "https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-10-2.webp",
+                    "https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-10-3.webp"
 
                 ],
                 linkProductColor: [
-                    productLink100,
 
-                ],
+                  ],
                 color: [
-                    'bg-blue-400',
+                  
                 ],
                 brand: 'Banita',
                 name: 'Short Sleeve Blouse',
@@ -193,9 +160,11 @@ var initialState = data ? data : [
                 status: '',
             },
             {
-                id: 4,
+                id: 8,
                 linkProduct: [
-                    productLink130,
+                   "https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-13-1.webp",
+                    "https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-13-2.webp",
+                    "https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-13-3.webp"
                 ],
                 linkProductColor: [],
                 color: [],
@@ -207,21 +176,21 @@ var initialState = data ? data : [
                 status: 'new',
             },
             {
-                id: 5,
+                id: 9,
                 linkProduct: [
-                    productLink160,
-                    productLink161,
-                    productLink162,
+                    "https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-16-1.webp",
+                    "https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-16-2.webp",
+                    "https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-16-3.webp"
                 ],
                 linkProductColor: [
-                    // productLink160,
-                    // productLink163,
-                    // 'https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-16-color-3.webp',
+                    "https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-16-1.webp",
+                    "https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-16-color-2.webp",
+                    "https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-16-color-3.webp"
                 ],
                 color: [
-                    'bg-blue-400',
-                    'bg-green-400',
-                    'bg-red-700',
+                    "bg-blue-400",
+                    "bg-green-400",
+                    "bg-red-700"
                 ],
                 brand: 'Banita',
                 name: 'Cascade Casual Shirt',
@@ -231,39 +200,35 @@ var initialState = data ? data : [
                 status: '',
             },
             {
-                id: 6,
+                id: 10,
                 linkProduct: [
-                    productLink40,
-                    productLink41,
-                    productLink42,
+                    "https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-18-1.webp",
+                    "https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-18-2.webp",
+                    "https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-18-3.webp"
                 ],
                 linkProductColor: [
                 ],
                 color: [
         
                 ],
-                brand: 'Banita',
-                name: 'Suede Leather Mini Skirt',
+                brand: 'Foxic',
+                name: 'Sport Cotton T-shirt',
                 price: 180,
                 oldPrice: '',
                 discount: '',
                 status: 'new',
             },
             {
-                id: 7,
+                id: 11,
                 linkProduct: [
-                    productLink210,
-                    productLink211,
-                    productLink210,
+                    "https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-21-1.webp",
+                    "https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-21-2.webp",
+                    "https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-21-3.webp"
         
                 ],
                 linkProductColor: [
-                    productLink210,
-                    productLink211,
                 ],
                 color: [
-                    'bg-blue-400',
-                    'bg-red-400',
                 ],
                 brand: 'Banita',
                 name: 'Genuine Leather Strap Watch',
@@ -273,11 +238,11 @@ var initialState = data ? data : [
                 status: '',
             },
             {
-                id: 8,
+                id: 12,
                 linkProduct: [
-                    productLink250,
-                    productLink251,
-                    productLink252,
+                    "https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-25-1.webp",
+                    "https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-25-2.webp",
+                    "https://big-skins.com/frontend/foxic-html-demo/images/skins/fashion/products/product-25-3.webp"
                 ],
                 linkProductColor: [
                 ],

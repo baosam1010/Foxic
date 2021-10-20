@@ -360,13 +360,17 @@ const mapDispatchToProps = (dispatch, props) => {
   return {
     onAddToCart: (product) => {
       dispatch(actAddToCart(product, 1));
-      dispatch(actShowToast("Add Product Sucess"))
+      dispatch(actShowToast("Add Product Cart Sucess"))
       setTimeout(()=>{
         dispatch(actHideToast(""));
-      },1500)
+      },1000)
     },
     onAddToWishList: (product) => {
       dispatch(actAddToWishList(product));
+      dispatch(actShowToast("Add Product WishList Sucess"))
+      setTimeout(()=>{
+        dispatch(actHideToast(""));
+      },1000)
     },
     
   };

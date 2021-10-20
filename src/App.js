@@ -112,14 +112,6 @@ function App(props) {
     // console.log("user:", user)
   }
 
-
-
-  // function handleToast(event) {
-  //   if (event) {
-  //     setIsToast(!isToast)
-  //   }
-  // };
-
   function handleLoginForm(e) {
     if (e) {
       // setIsLogin(!isToast)
@@ -156,9 +148,7 @@ function App(props) {
     getUers();
   }, [onSaveUserOnStore]);
 
-  // useEffect(()=>{
-  //   onShowToast("Login Success")
-  // },[inforAccount])
+  
 
   return (
     <Routers>

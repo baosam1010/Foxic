@@ -145,7 +145,7 @@ function Header(props) {
             </li>
 
             <li className="px-3 ">
-              <Link to="/accessories">Accessories</Link>
+              <Link to="/category/accessories">Accessories</Link>
             </li>
 
             <li className="px-3 relative group flex items-center hover:text-indigo-500 hover:cursor-pointer dropdown">
@@ -220,9 +220,9 @@ function Header(props) {
               </div>
             </li>
 
-            <li className="px-3 ">
+            {/* <li className="px-3 ">
               <Link to="/about">About</Link>
-            </li>
+            </li> */}
           </ul>
 
           <ul className="flex text-black">

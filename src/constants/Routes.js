@@ -5,6 +5,7 @@ import PostListPage from '../pages/PostListPage';
 import PostPage from "../pages/PostPage";
 import ProductPage from "../pages/ProductPage";
 import WishListPage from "../pages/WishListPage";
+import ProductCategory from "../pages/ProductCategory";
 // import WishList from "../components/wishList/WishList";
 // import Addresses from "../components/wishList/Address";
 // import Account from "../components/wishList/Account";
@@ -20,6 +21,21 @@ export const Routes = [
         path: '/cart',
         exact: false,
         component: CartPage,
+    },
+    {
+        path: '/category/accessories',
+        exact: false,
+        component: ({ match, }) => <ProductCategory match={match} />
+    },
+    {
+        path: '/category/men',
+        exact: false,
+        component: ({ match, }) => <ProductCategory match={match} />
+    },
+    {
+        path: '/category/women',
+        exact: false,
+        component: ({ match, }) => <ProductCategory match={match} />
     },
     {
         path: '/account',

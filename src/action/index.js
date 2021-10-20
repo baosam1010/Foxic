@@ -18,7 +18,7 @@ export const actDeleteProductInCart = (product) => {
 
 export const actUpdateProductInCart = (product, quantity) => {
     return {
-        type : Types.UPDATE_PRODUCT_IN_CART,
+        type: Types.UPDATE_PRODUCT_IN_CART,
         product,
         quantity
     }
@@ -35,10 +35,10 @@ export const actGetPosts = (posts) => {
 };
 
 // Action WishList
-export const actAddToWishList = (product, ) => {
+export const actAddToWishList = (product,) => {
     return {
         type: Types.ADD_TO_WISHLIST,
-        product,    
+        product,
     }
 };
 export const actDeleteProductInWishList = (product) => {
@@ -50,60 +50,60 @@ export const actDeleteProductInWishList = (product) => {
 
 
 // action account 
-export const actUpdateAccount = (inforAccountChange ) => {
+export const actUpdateAccount = (inforAccountChange) => {
     return {
         type: Types.UPDATE_ACCOUNT,
-        inforAccountChange,    
+        inforAccountChange,
     }
 };
 
 //action Comment
-export const actAddToComment = (comment ) => {
+export const actAddToComment = (comment) => {
     return {
         type: Types.ADD_TO_COMMENT,
-        comment,    
+        comment,
     }
 };
 
 // ACTION Save Users
-export const actSaveUsers = (users ) => {
+export const actSaveUsers = (users) => {
     return {
         type: Types.SAVE_USERS,
-        users,    
+        users,
     }
 };
 
-export const actRegister = (details ) => {
+export const actRegister = (details) => {
     return {
         type: Types.REGISTER,
-        details,    
+        details,
     }
 };
 // Login and Logout
-export const actLogin = (user ) => {
+export const actLogin = (user) => {
     return {
         type: Types.LOGIN,
-        user,    
+        user,
     }
 };
-export const actLogout = ( ) => {
+export const actLogout = () => {
     return {
         type: Types.LOGOUT,
-   
+
     }
 };
 
 // ACTION SHOW_LOADING
-export const actShowLoading = ( ) => {
+export const actShowLoading = () => {
     return {
         type: Types.SHOW_LOADING,
     }
 }
-export const actHideLoading = ( ) => {
+export const actHideLoading = () => {
     return {
         type: Types.HIDE_LOADING,
     }
-}
+};
 
 // action SHOW and HIDE Toast
 
@@ -112,14 +112,24 @@ export const actShowToast = (message) => {
         type: Types.SHOW_TOAST,
         message
     }
-}
+};
 export const actHideToast = (message) => {
     return {
         type: Types.HIDE_TOAST,
         message,
-        
+
+    }
+};
+
+// action Get Category
+
+export const actGetCategory = (products) => {
+    return {
+        type: Types.GET_CATEGORY,
+        products
     }
 }
+
 
 
 

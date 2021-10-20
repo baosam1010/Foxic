@@ -8,6 +8,7 @@ import Comments from './Comments';
 import User from './User';
 import Loading from './Loading';
 import Toast from './Toast';
+import Category from './Category';
 
 const rootReducer = combineReducers({
     Cart,
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
     User,
     Loading,
     Toast,
+    Category,
 });
 
 export default rootReducer;

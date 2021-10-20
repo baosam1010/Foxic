@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import checkOut from "./../assets/images/checkout.webp";
 import { connect } from "react-redux";
 import imgProDEs2 from "./../assets/images/product-description-02.webp";
 import imgProDEs1 from "./../assets/images/product-description-01.webp";
@@ -512,7 +511,7 @@ function ProductPage(props) {
                   <div className="">
                     <img
                       className="hidden lg:block"
-                      src={checkOut}
+                      src='https://big-skins.com/frontend/foxic-html-demo/images/payment/safecheckout.webp'
                       alt="logoPay1"
                     />
                     <img
