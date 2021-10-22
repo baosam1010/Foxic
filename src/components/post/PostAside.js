@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import blogfashion2 from './../../assets/images/blog-fashion-02.webp';
 
 function PostAside() {
     return (
@@ -38,7 +37,7 @@ function PostAside() {
                 <h2 className="uppercase mb-3 leading-4 text-base font-semibold">POPULAR Posts</h2>
                 <div className="w-full">
                     <Link to="/" className="">
-                        <img className="" src={blogfashion2} alt="example" />
+                        <img className="" src="https://big-skins.com/frontend/foxic-html-demo/images/blog/blog-02.webp" alt="example" />
                     </Link>
                     <div className="mt-3 w-full flex text-xs text-gray-400">
                         <div className="">

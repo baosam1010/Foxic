@@ -1,11 +1,6 @@
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import PostAside from "../components/post/PostAside";
-import blogPost2 from "./../assets/images/blog-02.webp";
-import blogPost4 from "./../assets/images/blog-04.webp";
-import logoUser from "./../assets/images/comment-author.webp";
-
-// import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import PostSlide from "../components/post/PostSlide";
@@ -105,7 +100,7 @@ function PostPage(props) {
               </Link>
             </section>
             <div className="mt-6">
-              <img className="w-full object-cover" src={blogPost2} alt="" />
+              <img className="w-full object-cover" src="https://big-skins.com/frontend/foxic-html-demo/images/blog/blog-02.webp" alt="blog2" />
             </div>
 
             {/* content */}
@@ -174,7 +169,7 @@ function PostPage(props) {
 
               <div className="mt-4">
                 <div className="w-full flex ">
-                  <img className="block w-3/6 pr-4" src={blogPost4} alt="/" />
+                  <img className="block w-3/6 pr-4" src="https://big-skins.com/frontend/foxic-html-demo/images/blog/blog-04.webp" alt="blog4" />
                   <p className="pl-4">
                     {`No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, 
                                 but because those who do not know how to pursue pleasure rationally encounter. 
@@ -241,7 +236,7 @@ function PostPage(props) {
                   <li className="flex ">
                     <div className="px-3/12">
                       <div className="w-110">
-                        <img className="rounded-full" src={logoUser} alt="/" />
+                        <img className="rounded-full" src="https://big-skins.com/frontend/foxic-html-demo/images/blog/comment-author.webp" alt="usercomment" />
                       </div>
                     </div>
                     <div className="flex flex-col px-3/12">

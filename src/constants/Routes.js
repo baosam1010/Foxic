@@ -23,9 +23,9 @@ export const Routes = [
         component: CartPage,
     },
     {
-        path: '/category/accessories',
+        path: '/category/:slug',
         exact: false,
-        component: ({ match, }) => <ProductCategory match={match} />
+        component: ({ match, location}) => <ProductCategory match={match} location={location} />
     },
     {
         path: '/category/men',
@@ -34,6 +34,11 @@ export const Routes = [
     },
     {
         path: '/category/women',
+        exact: false,
+        component: ({ match, }) => <ProductCategory match={match} />
+    },
+    {
+        path: 'category/accessories',
         exact: false,
         component: ({ match, }) => <ProductCategory match={match} />
     },

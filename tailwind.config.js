@@ -13,6 +13,7 @@ module.exports = {
         '150/100': '150%',
         '90vh': '90vh',
         '7-30':'7-30',
+        '365':'365px'
       },
       rotate:{
         360:'360deg',
@@ -69,6 +70,7 @@ module.exports = {
       margin:['first', 'last'],
       border:['acive','hover','focus','target'],
       borderWidth: ['first'], 
+      borderColor: ['first'], 
       padding:['responsive']
     },
 

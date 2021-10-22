@@ -13,8 +13,6 @@ export const DELETE_PRODUCT_IN_WISHLIST = 'DELETE_PRODUCT_IN_WISHLIST';
 // export const DELETE_PRODUCT_IN_ACCOUNT = 'DELETE_PRODUCT_IN_ACCOUNT';
 export const UPDATE_ACCOUNT = 'UPDATE_ACCOUNT';
 
-//login account
-
 // Add comments to post 
 export const ADD_TO_COMMENT = 'ADD_TO_COMMENT';
 // export const DELETE_PRODUCT_IN_COMMENT = 'DELETE_PRODUCT_IN_COMMENT';
@@ -35,5 +33,13 @@ export const HIDE_TOAST = 'HIDE_TOAST';
 
 // Get categories
 export const GET_CATEGORY = 'GET_CATEGORY';
+
+// get Product cllection and arrival 
+export const GET_COLLECTION = 'GET_COLLECTION';
+export const GET_ARRIVAL = 'GET_ARRIVAL';
+
+
+
+
 
 

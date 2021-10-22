@@ -10,12 +10,12 @@ function NavHeader() {
             </li>
 
             <li className="px-3 ">
-              <Link to="/accessories">Accessories</Link>
+              <Link to="/category/accessories">Accessories</Link>
             </li>
 
             <li className="px-3 relative group flex items-center hover:text-indigo-500 hover:cursor-pointer dropdown">
               <div className="">
-                <span className="text-sm mr-2 hover:text-indigo-500 hover:cursor-pointer">Men</span>
+                <Link to="/accessories/men" className="text-sm mr-2 hover:text-indigo-500 hover:cursor-pointer">Men</Link>
                 <i className="text-xs hover:text-indigo-500 fas fa-chevron-down"></i>
               </div>
               <div className="hidden  group-hover:block addBefore absolute top-0 left-0 transform translate-y-11/46 w-26 z-10 bg-white rounded border border-gray-400">
@@ -51,7 +51,7 @@ function NavHeader() {
 
             <li className="px-3 relative group flex items-center hover:text-indigo-500 hover:cursor-pointer dropdown">
               <div className="">
-                <span className="text-sm mr-2 hover:text-indigo-500 hover:cursor-pointer">Women</span>
+                <Link to="/category/women" className="text-sm mr-2 hover:text-indigo-500 hover:cursor-pointer">Women</Link>
                 <i className="text-xs hover:text-indigo-500 fas fa-chevron-down"></i>
               </div>
               <div className="hidden  group-hover:block addBefore absolute top-0 left-0 transform translate-y-11/46 w-26 z-10 bg-white rounded border border-gray-400">
@@ -85,9 +85,9 @@ function NavHeader() {
               </div>
             </li>
 
-            <li className="px-3 ">
+            {/* <li className="px-3 ">
               <Link to="/about">About</Link>
-            </li>
+            </li> */}
           </ul>
     )
 }

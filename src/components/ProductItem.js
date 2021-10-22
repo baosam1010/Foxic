@@ -7,12 +7,11 @@ import { Link } from 'react-router-dom';
 function ProductItem(props) {
 
     const [isColor, setIsColor] = useState(false);
-    // const [isAddToCart] = useState(false);
     const [newLink, setNewLink] = useState('');
     const { setIsModal, setIsProduct } = props;
     const { onAddToCart, product, wishList, onAddToWishList } = props;
 
-    let nameProduct = product.name.toLowerCase().replace(/ /g, "-");
+    // let nameProduct = product.name.toLowerCase().replace(/ /g, "-");
     let index = -1;
     function findindex(product, wishList) {
         for (let i = 0; i < wishList.length; i++) {
@@ -43,8 +42,8 @@ function ProductItem(props) {
         if (newLink === '') {
             // console.log('vao 1')
             return (
-                <Link to={`/product/${nameProduct}`}>
-                    <img key={product.id} className=" transform hover:scale-105 "
+                <Link to={`/product/${product.id}`}>
+                    <img key={product.id} className="w-full transform hover:scale-105 "
                         src={linkImageClothes}
                         alt="clothes"
                     />
@@ -58,8 +57,8 @@ function ProductItem(props) {
                 product.newLink = newLink;
                 // console.log('product1:', product);
                 return (
-                    <Link to={`/product/${nameProduct}`}>
-                        <img key={product.id} className=" transform hover:scale-105 "
+                    <Link to={`/product/${product.id}`}>
+                        <img key={product.id} className="w-full transform hover:scale-105 "
                             src={product.newLink}
                             alt="clothes"
                         />
@@ -159,14 +158,22 @@ function ProductItem(props) {
 
 
     const showModal = (product) => {
+        console.log('productMODAL:', product)
         if (product) {
             setIsModal(true);
             setIsProduct(product)
         }
     };
 
-    const handleAddToCart = (product) => {
-        onAddToCart(product);
+    const handleAddToCart = (product, quantity) => {
+        let color= null;
+        if(product.color.length>0){
+            color = product.color[0].slice(3,-4)
+        
+        }else{
+            color="defaultColor"
+        }
+        onAddToCart(product,quantity, color);
     }
     const handleAddToWishList = (product) => {
         // console.log('WishList_Collection:',product)
@@ -242,7 +249,7 @@ function ProductItem(props) {
                 <h2 className=" w-full text-sm font-normal text-gray-400">
                     {product.brand}
                 </h2>
-                <Link className="w-full" to={`/product/${nameProduct}`}>
+                <Link className="w-full" to={`/product/${product.id}`}>
                     <h3 className=" w-full mt-1 hover:text-indigo-500 line-clamp-1">
                         {product.name}
                     </h3>
@@ -264,7 +271,7 @@ function ProductItem(props) {
                     <div className="w-full h-full md:hidden group-hover:block ">
                         <button
                             className=" bg-yellow-400 p-1 rounded uppercase text-indigo-500 font-semibold hover:bg-black hover:text-white"
-                            onClick={() => handleAddToCart(product)}
+                            onClick={() => handleAddToCart(product,1)}
                         >
                             add to cart
                         </button>

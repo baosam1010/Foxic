@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PostsList from "../post/PostsList";
 import Banner from "./Banner";
 import Brand from "./Brand";
@@ -8,16 +8,19 @@ import NewArrival from "./NewArrival";
 import TrendSummer from "./TrendSummer";
 import { connect } from "react-redux";
 import Overlay from "./overlay/Overlay";
-import { actAddToCart, actAddToWishList } from "../../action";
+import { actAddToCart, actAddToWishList} from "../../action";
 import LoadingGlobal from "../LoadingGlobal";
+import productApi from '../../api/productApi';
+
 
 function Main(props) {
-  const { match, Products, wishList, onAddToCart, onAddToWishList } = props;
-  const productsList = Products[0].productsList;
-  const ProductArrival = Products[0].ProductArrival;
+  const { match, wishList, onAddToCart, onAddToWishList} = props;
 
+  // console.log('main:',Products)
   const [isModal, setIsModal] = useState(false);
   const [isProduct, setIsProduct] = useState(null);
+  const [collection, setCollection] = useState(null)
+  const [arrival, setArrival] = useState(null)
 
   function handleSetIsModal(event) {
     if (event) {
@@ -28,26 +31,54 @@ function Main(props) {
   function handleSetIsProduct(product) {
     setIsProduct(product);
   }
-  const handleAddToCart = (product) => {
-    onAddToCart(product);
+  const handleAddToCart = (product, quantity, color) => {
+    onAddToCart(product,quantity, color );
   };
   const handleAddToWishList = (product) => {
     // console.log('WishList_Collection:',product)
     onAddToWishList(product);
   };
+  
+  useEffect(() => {
+    const fetchCollection = async ()=>{
+      const params = {
+        search: 'collection'
+      };
+        const collection = await productApi.getAll(params);
+        // console.log("collection: ",collection)
+        setCollection(collection)
+    };
+    fetchCollection();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
+
+  useEffect(() => {
+    const fetchArrival = async ()=>{
+      const params = {
+        search: 'arrival'
+      };
+        const arrival = await productApi.getAll(params);
+        // console.log("arrival: ",arrival)
+        setArrival(arrival)
+    };
+    fetchArrival();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
+
+
   return (
     <div className="max-w-full mb-20">
       <MainSlider />
       <Banner />
       <Brand />
       <Collection
-        productsList={productsList}
+        productsList={collection}
         setIsModal={setIsModal}
         setIsProduct={handleSetIsProduct}
       />
       <TrendSummer />
       <NewArrival
-        productsList={ProductArrival}
+        productsList={arrival}
         setIsModal={setIsModal}
         setIsProduct={handleSetIsProduct}
       />
@@ -74,12 +105,13 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch, props) => {
     return {
-      onAddToCart: (product) => {
-        dispatch(actAddToCart(product, 1));
+      onAddToCart: (product, quantity, color) => {
+        dispatch(actAddToCart(product, quantity,color));
       },
       onAddToWishList: (product) => {
         dispatch(actAddToWishList(product));
       },
+     
     };
   };
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

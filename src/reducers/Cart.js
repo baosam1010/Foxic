@@ -4,7 +4,7 @@ var data = JSON.parse(localStorage.getItem('CART'));
 var initialState = data ? data : [];
 
 const Cart = (state = initialState, action) => {
-    var { product, quantity } = action;
+    var { product, quantity, color, size } = action;
     var index = -1;
     
     switch (action.type) {
@@ -15,7 +15,7 @@ const Cart = (state = initialState, action) => {
             } else {
                 state.push({
                     product,
-                    quantity
+                    quantity, color, size
                 });
             }
             // console.log('state_Cart_Action:', state)

@@ -22,7 +22,7 @@ function CartItem(props) {
           />
           <div className=" flex flex-col">
             <span className="m-auto font-semibold">{item.product.name}</span>
-            <span className="w-full m-auto">Color</span>
+            <span className="w-full m-auto">{item.color}</span>
           </div>
         </div>
       </div>

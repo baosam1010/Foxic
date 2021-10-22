@@ -2,14 +2,14 @@ import classNames from 'classnames'
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link, Switch, Route } from 'react-router-dom'
-import { actAddToCart, actDeleteProductInWishList, actLogout, actUpdateAccount } from '../action'
+import { actAddToCart, actDeleteProductInWishList, actHideToast, actLogout, actShowToast, actUpdateAccount } from '../action'
 import Account from '../components/wishList/Account'
 import Addresses from '../components/wishList/Address'
 import WishList from '../components/wishList/WishList'
 function WishListPage(props) {
 
     const { wishList: wishCart, onAddToCart, onDeleteProductInWihList, inforAccount, onUpdateAccount, onLogout } = props;
-    console.log('inforAccountWL:', inforAccount)
+    // console.log('inforAccountWL:', inforAccount)
     const links = [
         {
             title: 'My Account',
@@ -94,8 +94,12 @@ function WishListPage(props) {
 
 const mapDispatchToProps = (dispatch, props) => {
     return {
-        onAddToCart: (product) => {
-            dispatch(actAddToCart(product, 1))
+        onAddToCart: (product, quantity, color) => {
+            dispatch(actAddToCart(product, quantity, color));
+            dispatch(actShowToast("Add Product  Success"));
+            setTimeout(() => {
+               dispatch( actHideToast(""));
+            },1500)
         },
         onDeleteProductInWihList: (product) => {
             dispatch(actDeleteProductInWishList(product))

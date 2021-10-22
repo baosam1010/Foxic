@@ -18,57 +18,27 @@ function Header(props) {
   const [open, setOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [openModalAccountHeader, setOpenModalAccountHeader] = useState(false);
+  const [search, setSearch] = useState('')
 
   const { products, wishListCart: listCart } = props;
   let numWishList = listCart.length;
   let num = products.length;
-  const { isLogin, setIsLogin, user, Logout, isRegister, setIsRegister } = props;
+  const { isLogin, setIsLogin, user, Logout, isRegister, setIsRegister, handleKey } = props;
   // console.log("user1:", user)
 
-  const openSearch = (e) => {
+  const openSearch = () => {
     setOpen(!open);
   };
 
-  // const showItemCart = (products) => {
-  //   let result = null;
-  //   if (num > 0) {
-  //     result = products.map((item, index) => {
-  //       let priceProduct = item.product.price * item.quantity;
-  //       return (
-  //         <li
-  //           key={item.product.id}
-  //           className=" flex w-full bg-white pt-2 addHover hover:bg-red-500 last:pb-2"
-  //         >
-  //           <div className="mx-2 ">
-  //             <img
-  //               className="w-16 mr-2 object-cover"
-  //               src={item.product.linkProduct[0]}
-  //               alt={item.product.name}
-  //             />
-  //           </div>
-  //           <div className="flex flex-col w-full h-full mr-2">
-  //             <h4 className="w-full text-base font-medium text-black">
-  //               {item.product.name}
-  //             </h4>
-  //             <div className="w-full flex justify-between mt-2">
-  //               <div>
-  //                 <span className="mr-1 text-black">Mau sac,</span>
-  //                 <span className="text-black">{item.quantity}</span>
-  //               </div>
-  //               <p className="block text-black">{priceProduct}$</p>
-  //             </div>
-  //           </div>
-  //           <button className="m-auto pr-2 text-black hover:text-red-500">
-  //             Xóa
-  //           </button>
-  //         </li>
-  //       );
-  //     });
-  //   }
 
-  //   return result;
-  // };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // console.log(search)
+    handleKey(search);
+    setOpen(!open);
+    // setSearch('')
 
+  };
 
   return (
     <div className=" text-white">
@@ -113,7 +83,7 @@ function Header(props) {
               setIsLogin={setIsLogin}
               Logout={Logout}
             />
-                       
+
           </ul>
         </div>
       </header>
@@ -150,7 +120,7 @@ function Header(props) {
 
             <li className="px-3 relative group flex items-center hover:text-indigo-500 hover:cursor-pointer dropdown">
               <div className="">
-                <span className="text-sm mr-2 hover:text-indigo-500 hover:cursor-pointer">Men</span>
+                <Link to="/category/men" className="text-sm mr-2 hover:text-indigo-500 hover:cursor-pointer">Men</Link>
                 <i className="text-xs hover:text-indigo-500 fas fa-chevron-down"></i>
               </div>
               <div className="hidden  group-hover:block addBefore absolute top-0 left-0 transform translate-y-11/46 w-26 z-10 bg-white rounded border border-gray-400">
@@ -186,7 +156,7 @@ function Header(props) {
 
             <li className="px-3 relative group flex items-center hover:text-indigo-500 hover:cursor-pointer dropdown">
               <div className="">
-                <span className="text-sm mr-2 hover:text-indigo-500 hover:cursor-pointer">Women</span>
+                <Link to="/category/woman" className="text-sm mr-2 hover:text-indigo-500 hover:cursor-pointer">Woman</Link>
                 <i className="text-xs hover:text-indigo-500 fas fa-chevron-down"></i>
               </div>
               <div className="hidden  group-hover:block addBefore absolute top-0 left-0 transform translate-y-11/46 w-26 z-10 bg-white rounded border border-gray-400">
@@ -285,17 +255,27 @@ function Header(props) {
       <div
         className={classNames(
           open ? "flex" : "hidden",
-          "relative max-w-3xl m-auto mb-2 text-black  items-center z-10 px-2"
+          "relative max-w-4xl mx-auto text-black items-center z-10 px-2"
         )}
       >
-        <div className="border-b-2 border-yellow-400 w-full ">
-          <input
-            type="text"
-            className="w-full outline-none py-3 text-lg "
-            placeholder="What are you looking for?"
-          />
+        <div className="w-full bg-gray-300 absolute top-0 ">
+          <form
+            className="w-full flex flex-nowrap items-center justify-center border-b-4 border-yellow-400 "
+            onSubmit={(e) => handleSubmit(e)}>
+            <input
+              type="text"
+              className="flex-grow outline-none pl-3 py-3 text-lg "
+              placeholder="What are you looking for?"
+              name="search"
+              value={search}
+              onChange={(e) => { setSearch(e.target.value) }}
+            />
+            <div className="right-0 pl-3 pr-4 hover:cursor-pointer"
+              onClick={openSearch}>
+              <i className="text-3xl text-black  fas fa-times "></i>
+            </div>
+          </form>
         </div>
-        <i className="text-3xl ml-3 mr-4 fas fa-times " onClick={openSearch}></i>
       </div>
       {openModal && <ModalHeader
         openModal={openModal}
@@ -329,5 +309,10 @@ const mapStateToProps = (state) => {
     wishListCart: state.WishListCart,
   };
 };
+const mapDispatchToProps = (dispatch, props) => {
+  return {
 
-export default connect(mapStateToProps, null)(Header);
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

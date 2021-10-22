@@ -4,15 +4,28 @@ import React, { useEffect, useState } from 'react'
 function FooterProductPage(props) {
 
     const { 
-        // num, setNum,
          product, 
-         handleChangeInput,
-         handleAddToCart } = props;
+         onAddToCart,
+          } = props;
          
     const [showFooter, setShowFooter] = useState(false);
     const [num, setNum] = useState(1);
-
     
+    const handleChangeInput=(e)=>{
+        setNum(e.target.value);
+    };
+    const handleAddToCart = (product, quantity)=>{
+        let color = null;
+        if(product.color.length>0){
+            color = product.color[0].slice(3, -4);
+        }else{color ="defaultColor"}
+        onAddToCart(product, quantity, color);
+        setNum(1)
+    };
+    useEffect(() => {
+
+    },[product])
+
     useEffect(() => {
         let lastScroll = 0;
         window.addEventListener("scroll", () => {
@@ -42,17 +55,17 @@ function FooterProductPage(props) {
                     <div className=" flex items-center ">
                         <img
                             className="w-12 h-16"
-                            src={product[0].linkProduct[0]}
+                            src={product.linkProduct[0]}
                             alt=""
                         />
                         <div className="hidden h-full lg:flex flex-col  justify-between ml-5">
                             <h2 className="block my-1 text-xl font-semibold">
-                                {product[0].name}
+                                {product.name}
                             </h2>
                             <div className="flex items-center my-1 ">
                                 <span className="text-xl font-semibold">$200.00</span>
                                 <span className="line-through text-base font-normal ml-2">
-                                    {product[0].price}
+                                    {product.price}
                                 </span>
                             </div>
                         </div>
@@ -95,7 +108,7 @@ function FooterProductPage(props) {
                         </div>
                         <div className=" lg:flex-grow">
                             <button
-                                onClick={() => handleAddToCart(...product, num)}
+                                onClick={() => handleAddToCart(product, num)}
                                 className="w-full uppercase  bg-green-500 text-white text-sm lg:text-xl font-medium  py-3 px-2 rounded hover:bg-black hover:text-white"
                             >
                                 Add To Cart

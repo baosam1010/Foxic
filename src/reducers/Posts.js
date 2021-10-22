@@ -1,11 +1,3 @@
-// import * as Types from './../constants/ActionTypes';
-
-//  blog Fashion
-
-import blogfashion2 from './../assets/images/blog-fashion-02.webp';
-import blogfashion3 from './../assets/images/blog-fashion-03.webp';
-import blogfashion4 from './../assets/images/blog-fashion-04.webp';
-
 
 var data = JSON.parse(localStorage.getItem('POST'))
 var initialState =  data ? data : [
@@ -13,7 +5,7 @@ var initialState =  data ? data : [
         id: 1,
         name: 'The High-Street Brand Fashion',
         time: 'June 9, 2020',
-        image: blogfashion2,
+        image: 'https://big-skins.com/frontend/foxic-html-demo/images/blog/blog-01.webp',
         comments: [
             {
                 idComment: 1,
@@ -49,7 +41,7 @@ var initialState =  data ? data : [
         id: 2,
         name: 'Trends to Try This Season',
         time: 'June 9, 2020',
-        image: blogfashion3,
+        image: 'https://big-skins.com/frontend/foxic-html-demo/images/blog/blog-03.webp',
         comments: [
             {
                 idComment: 1,
@@ -85,7 +77,7 @@ var initialState =  data ? data : [
         id: 3,
         name: 'Working From Home',
         time: 'June 9, 2020',
-        image: blogfashion4,
+        image: 'https://big-skins.com/frontend/foxic-html-demo/images/blog/blog-02.webp',
         comments: [
             {
                 idComment: 1,

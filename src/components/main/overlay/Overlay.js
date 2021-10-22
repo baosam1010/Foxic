@@ -14,12 +14,12 @@ function Overlay(props) {
     onAddToCart,
     onAddToWishList,
   } = props;
-  
-  let name = null;
-  //   console.log("isProduct1:", isProduct);
-  if (isProduct) {
-    name = isProduct.name.toLowerCase().replace(/ /g, "-");
-  }
+
+  // let name = null;
+  // console.log("wishList11111:", wishList);
+  // if (isProduct) {
+    // name = isProduct.name.toLowerCase().replace(/ /g, "-");
+  // }
 
   function showCarousel(product) {
     // console.log("product_showcarousel1:", product);
@@ -34,9 +34,10 @@ function Overlay(props) {
   function showInfomarion(product) {
     let xhtml = null;
     if (product) {
-      
+
       xhtml = (
-        <div className="pr-4 py-7">
+       <div className="px-1">
+          <div className="pr-4 py-7">
           <h1 className=" text-3xl font-semibold ">{product.name}</h1>
           <div className="flex flex-row items-center mt-2">
             <span className="text-3xl font-semibold mr-2">
@@ -68,12 +69,12 @@ function Overlay(props) {
               <i className="mt-2 fas fa-check"></i> Only non-chlorine
             </li>
           </ul>
-          <FormOverlay 
-            product={product} 
-            onAddToCart={onAddToCart} 
-            onAddToWishList={onAddToWishList} 
+          <FormOverlay
+            product={product}
+            onAddToCart={onAddToCart}
+            onAddToWishList={onAddToWishList}
             wishList={wishList}
-        />
+          />
           <div className="grid grid-cols-3 mt-8">
             <div className="w-full flex items-center justify-center">
               <i className="block text-4xl mr-2  fas fa-shipping-fast"></i>
@@ -101,7 +102,7 @@ function Overlay(props) {
             {/* <Link className="w-full" to="/product">
                         </Link> */}
             <Link
-              to={`/product/${name}`}
+              to={`/product/${product.id}`}
               className="w-full bg-gray-100 uppercase px-10 py-2 rounded font-medium hover:bg-black hover:text-white  ml-0 "
             >
               view full info
@@ -109,22 +110,23 @@ function Overlay(props) {
 
             <button
               className="w-full bg-gray-100 uppercase px-10 py-2 rounded font-medium hover:bg-black hover:text-white ml-2 mr-0"
-              onClick={(e)=>handleSetIsModal(e)}
+              onClick={(e) => handleSetIsModal(e)}
             >
               close
             </button>
           </div>
         </div>
+       </div>
       );
     }
     return xhtml;
   }
 
-    function handleSetIsModal(e) {
+  function handleSetIsModal(e) {
     //   console.log("click");
-      let event = e.target;
-      setIsModal(event);
-    }
+    let event = e.target;
+    setIsModal(event);
+  }
 
   return (
     <div
@@ -134,11 +136,13 @@ function Overlay(props) {
       )}
     >
       {/* <div className={classNames( ((isModal === false || isModal === undefined || isModal === null) ? 'hidden' : 'flex'),"fixed inset-0 bg-black backdrop-filter backdrop-opacity-75 z-100 items-center justify-center ")}> */}
-      <div className="bg-white rounded w-8/12 h-90vh  overflow-y-auto  scrollbar-hide">
+      <div className="bg-white rounded w-full mx-2 md:w-8/12 h-90vh  overflow-y-auto  scrollbar-hide">
         <div className="grid grid-cols-2 gap-4">
-          {showCarousel(isProduct)}
-          <div className="w-full ">
-          { showInfomarion(isProduct)}
+          <div className="col-span-2 md:col-span-1">
+            {showCarousel(isProduct)}
+          </div>
+          <div className="col-span-2 md:col-span-1 ">
+            {showInfomarion(isProduct)}
           </div>
         </div>
       </div>

@@ -28,17 +28,18 @@ import {
 } from './action';
 import userApi from './api/userApi';
 import LoadingGlobal from './components/LoadingGlobal';
-
+import { Redirect } from 'react-router-dom'
 
 function App(props) {
 
   const {
+    onLoading,
     onLogin,
     onLogout,
     inforAccount,
     onSaveUserOnStore,
     onRegister,
-    Users, 
+    Users,
     // onShowToast,
   } = props;
   // console.log('showLoading:', showLoading.showLoading)
@@ -140,7 +141,7 @@ function App(props) {
       try {
         const response = await userApi.getAll();
         // console.log("response: ",response);
-          onSaveUserOnStore(response); 
+        onSaveUserOnStore(response);
       } catch (error) {
         console.log('Fail to get Users');
       }
@@ -148,11 +149,20 @@ function App(props) {
     getUers();
   }, [onSaveUserOnStore]);
 
-  
+
+  const [key, setKey] = useState('')
+  const handleKey = (value) => {
+    // console.log(value)
+    setKey(value)
+  };
+
+  useEffect(() => {
+    onLoading()
+    setKey('')
+  }, [key, onLoading]);
 
   return (
     <Routers>
-
       <div className="max-w-full">
         <Header
           isLogin={isLogin}
@@ -160,18 +170,19 @@ function App(props) {
           isRegister={isRegister}
           setIsRegister={setIsRegister}
           Logout={Logout}
-          // user={user} 
           user={inforAccount}
+          handleKey={handleKey}
         />
-
-        <Switch>
-          {showRoutes(Routes)}
-        </Switch>
-
+        {key !== "" ? (
+          <Redirect to={`/category/${key}`} />
+        ) : (
+          <Switch>
+            {showRoutes(Routes)}
+          </Switch>)}
         <Footer />
         <ButtonTop />
         <LoadingGlobal />
-        <Toast  />
+        <Toast />
         {isLogin && <LoginForm isLogin={isLogin} setIsLogin={setIsLogin} Login={Login} error={error} />}
         {isRegister && <RegisterForm isRegister={isRegister} setIsRegister={setIsRegister} Register={Register} error={error} />}
       </div>
@@ -183,6 +194,7 @@ const mapStateToProps = (state) => {
     Users: state.User,
     inforAccount: state.AccountReducer,
     isLoading: state.Loading,
+    search: state.Search,
   }
 };
 const mapDispatchToProps = (dispatch, props) => {
@@ -215,14 +227,13 @@ const mapDispatchToProps = (dispatch, props) => {
         dispatch(actHideLoading())
       }, 500);
     },
-
-    // onShowToast:(message)=>{
-    //   dispatch(actShowToast(message));
-    //   setTimeout(() => {
-    //     dispatch(actHideToast(''));
-    //   }, 1500)
-    // }
-
+    onLoading: () => {
+      dispatch(actShowLoading());
+      setTimeout(() => {
+        dispatch(actHideLoading())
+      }, 1500);
+    }, 
+    
   }
 
 }

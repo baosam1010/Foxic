@@ -1,13 +1,13 @@
 import classNames from 'classnames';
-import React, {  useState } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import ReactStars from "react-rating-stars-component";
 import Overlay from '../main/overlay/Overlay';
 
 
 function WishList(props) {
-    
-    const { products, onAddToCart  } = props;
+
+    const { products, onAddToCart } = props;
     const [isColor, setIsColor] = useState(false);
     const [newLink, setNewLink] = useState('');
 
@@ -16,11 +16,15 @@ function WishList(props) {
     let num = products.length;
     // console.log('products_Wishist', products)
 
-    const handleAddToCart = (product) => {
-        onAddToCart(product);
+    const handleAddToCart = (product, quantity) => {
+        let color = null;
+        if(product.color.length>0){
+            color = product.color[0].slice(3, -4);
+        }else{color="defaultColor"}
+        onAddToCart(product, quantity, color);
     };
-    const handleDeleteToWishList=(product)=>{
-        const {onDeleteProductInWihList } = props;
+    const handleDeleteToWishList = (product) => {
+        const { onDeleteProductInWihList } = props;
         onDeleteProductInWihList(product);
     };
 
@@ -31,7 +35,7 @@ function WishList(props) {
 
             xhtml = products.map((product) => {
 
-                let nameProduct = product.name.toLowerCase().replace(/ /g, "-");
+                // let nameProduct = product.name.toLowerCase().replace(/ /g, "-");
 
                 const ratingChanged = (newRating) => {
                     console.log("Stars:", newRating);
@@ -40,12 +44,12 @@ function WishList(props) {
                 const changeClothes = (product, newLink) => {
                     const linkImageClothes = product.linkProduct[0];
                     // console.log('test:',linkImageClothes);
-                    let nameProduct = product.name.toLowerCase().replace(/ /g, "-")
+                    // let nameProduct = product.name.toLowerCase().replace(/ /g, "-")
                     if (newLink === '') {
                         // console.log('vao 1')
                         return (
-                            <Link to={`/product/${nameProduct}`}>
-                                <img  key={product.id} className="w-full object-cover transform lg:hover:scale-105 "
+                            <Link to={`/product/${product.id}`}>
+                                <img key={product.id} className="w-full h-365 object-cover transform lg:hover:scale-105 "
                                     src={linkImageClothes}
                                     alt="clothes"
                                 />
@@ -59,8 +63,8 @@ function WishList(props) {
                             product.newLink = newLink;
                             // console.log('product1:', product);
                             return (
-                                <Link to={`/product/${nameProduct}`}>
-                                    <img key={product.id} className=" transform hover:scale-105 "
+                                <Link to={`/product/${product.id}`}>
+                                    <img key={product.id} className="object-cover w-full h-365 transform hover:scale-105 "
                                         src={product.newLink}
                                         alt="clothes"
                                     />
@@ -69,7 +73,7 @@ function WishList(props) {
                         } else {
 
                             return (
-                                <Link to={`/product/${nameProduct}`}>
+                                <Link to={`/product/${product.id}`}>
                                     <img key={product.id} className=" transform hover:scale-105 "
                                         src={linkImageClothes}
                                         alt="clothes"
@@ -149,15 +153,15 @@ function WishList(props) {
                             // console.log('itemLink_Left:', itemLink);
                             return xhtml = (
                                 <li key={index} className="mt-3 hover:border-red-500  ">
-                                    <a className="w-full h-full" href="/">
-                                        <img
-                                            className=" w-9 h-9 rounded-full border-2 border-transparent hover:border-indigo-500 "
-                                            src={itemLink}
-                                            alt={`mini${index}`}
-                                            onMouseOver={(e) => changeLink(e, product)}
-                                        // data-link={itemLink}
-                                        />
-                                    </a>
+                                    {/* <Link className="w-full h-full" to={`product/${product.id}`}> */}
+                                    <img
+                                        className=" w-9 h-9 rounded-full border-2 border-transparent hover:border-indigo-500 "
+                                        src={itemLink}
+                                        alt={`mini${index}`}
+                                        onMouseOver={(e) => changeLink(e, product)}
+                                    // data-link={itemLink}
+                                    />
+                                    {/* </Link> */}
                                 </li>
                             )
                         }
@@ -174,85 +178,83 @@ function WishList(props) {
 
 
                 return (
-                   <div key={product.name} className="col-span-1 border-1 rounded">
+                    <div key={product.name} className="col-span-1 border-1 rounded">
                         <div key={product.id} className="w-full h-full group">
-                        <div className="relative w-full ">
-                            <div className="w-full overflow-hidden ">
-                                {changeClothes(product, newLink)}
+                            <div className="relative w-full ">
+                                <div className="w-full overflow-hidden ">
+                                    {changeClothes(product, newLink)}
+                                </div>
+
+                                {/* xem lai cho nay chua lam  (mini color ben phai)*/}
+                                <div className=" absolute top-0 right-0 block sm:hidden sm:group-hover:block">
+                                    <ul className="">
+                                        <li onClick={() => handleDeleteToWishList(product)} className="flex items-center justify-center mb-2 rounded-full bg-gray-100  mt-2 w-9 h-9 transform transition duration-500 ease-in-out hover:rotate-360 hover:bg-gray-200">
+                                            <i className="fas fa-trash-alt"></i>
+                                        </li>
+                                        <li className="flex items-center justify-center mb-2 rounded-full bg-gray-100  w-9 h-9 transform transition duration-500 ease-in-out hover:rotate-360 hover:bg-gray-200">
+                                            <button onClick={() => { showModal(product) }} >
+                                                <i className="far fa-eye"></i>
+                                            </button>
+                                        </li>
+                                        {miniColorRight(product)}
+
+                                    </ul>
+                                </div>
+
+                                {/* status */}
+                                <div className=" absolute left-2 top-2 group-hover:hidden">
+                                    {showStatus(product)}
+                                </div>
+
+                                {/* mini Product ben trai */}
+                                <div className=" absolute bottom-0 hidden group-hover:block ">
+                                    <ul className=" ml-2 transform ">
+                                        {miniProductLeft(product)}
+
+                                    </ul>
+                                </div>
+
                             </div>
 
-                            {/* xem lai cho nay chua lam  (mini color ben phai)*/}
-                            <div className=" absolute top-0 right-0 block sm:hidden sm:group-hover:block">
-                                <ul className="">
-                                    <li onClick={() => handleDeleteToWishList(product)} className="flex items-center justify-center mb-2 rounded-full bg-gray-100  mt-2 w-9 h-9 transform transition duration-500 ease-in-out hover:rotate-360 hover:bg-gray-200">
-                                        <i className="fas fa-trash-alt"></i>
-                                    </li>
-                                    <li className="flex items-center justify-center mb-2 rounded-full bg-gray-100  w-9 h-9 transform transition duration-500 ease-in-out hover:rotate-360 hover:bg-gray-200">
-                                        <button onClick={() => { showModal(product) }} >
-                                            <i className="far fa-eye"></i>
+                            {/* information product */}
+                            <div className="flex flex-wrap items-center text-center justify-center">
+                                <ReactStars
+                                    className=" w-full"
+                                    count={5}
+                                    onChange={ratingChanged}
+                                    size={24}
+                                    value={5}
+                                    activeColor="#ffd700"
+                                />
+                                <h2 className=" w-full text-sm font-normal text-gray-400">{product.brand}</h2>
+                                <Link className="w-full" to={`/product/${product.id}`}>
+                                    <h3 className=" w-full mt-1 hover:text-indigo-500 ">{product.name}</h3>
+                                </Link>
+                                <div className="group mt-2 h-10">
+                                    <p className="hidden  w-full h-full md:flex flex-nowrap items-center  font-semibold group-hover:hidden">
+                                        <span className={classNames(product.oldPrice === '' || product.oldPrice === null ? 'hidden' : 'block', "line-through mr-2 font-light text-xs ")}>${product.oldPrice}</span>
+                                        <span>${product.price}</span>
+                                    </p>
+                                    <div className=" w-full h-full md:hidden group-hover:block ">
+                                        <button
+                                            className=" bg-yellow-400 p-1 rounded uppercase text-indigo-500 font-semibold hover:bg-black hover:text-white"
+                                            onClick={() => handleAddToCart(product,1)}
+                                        >
+                                            add to cart
                                         </button>
-                                    </li>
-                                    {miniColorRight(product)}
-
-                                </ul>
-                            </div>
-
-                            {/* status */}
-                            <div className=" absolute left-2 top-2 group-hover:hidden">
-                                {showStatus(product)}
-                            </div>
-
-                            {/* mini Product ben trai */}
-                            <div className=" absolute bottom-0 hidden group-hover:block ">
-                                <ul className=" ml-2 transform ">
-                                    {miniProductLeft(product)}
-
-                                </ul>
-                            </div>
-
-                        </div>
-
-                        {/* information product */}
-                        <div className="flex flex-wrap items-center text-center justify-center">
-                            <ReactStars
-                                className=" w-full"
-                                count={5}
-                                onChange={ratingChanged}
-                                size={24}
-                                value={5}
-                                activeColor="#ffd700"
-                            />
-                            <h2 className=" w-full text-sm font-normal text-gray-400">{product.brand}</h2>
-                            <Link className="w-full" to={`/product/${nameProduct}`}>
-                                <h3 className=" w-full mt-1 hover:text-indigo-500 ">{product.name}</h3>
-                            </Link>
-                            <div className="group mt-2 h-10">
-                                <p className="hidden  w-full h-full md:flex flex-nowrap items-center  font-semibold group-hover:hidden">
-                                    <span className={classNames(product.oldPrice === '' || product.oldPrice === null ? 'hidden' : 'block', "line-through mr-2 font-light text-xs ")}>${product.oldPrice}</span>
-                                    <span>${product.price}</span>
-                                </p>
-                                <div className=" w-full h-full md:hidden group-hover:block ">
-                                    <button
-                                        className=" bg-yellow-400 p-1 rounded uppercase text-indigo-500 font-semibold hover:bg-black hover:text-white"
-                                        onClick={() => handleAddToCart(product)}
-                                    >
-                                        add to cart
-                                    </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
-                
-                   </div>
                 );
             })
             return xhtml;
         }
     };
 
-    function handleSetIsModal(event){
-        if(event){
+    function handleSetIsModal(event) {
+        if (event) {
             setIsModal(!isModal);
         }
     };
@@ -262,19 +264,19 @@ function WishList(props) {
     return (
         <div className="w-full">
             <h2 className="w-full text-3xl font-semibold mb-7 ">My WishList</h2>
-            <div className={classNames(num === 0 ? 'block': 'hidden',"w-full mt-2")}>
+            <div className={classNames(num === 0 ? 'block' : 'hidden', "w-full mt-2")}>
                 <h3 className="text-2xl font-medium mb-3">Don't Have Product in Your WishList</h3>
-                <Link 
+                <Link
                     to="/"
                     className="bg-blue-400 px-3 py-2  rounded text-white font-medium hover:bg-black"
-                > 
+                >
                     Add More...
                 </Link>
             </div>
             <div className="w-full grid  sm:grid-cols-2 gap-2  lg:grid-cols-3 lg:gap-4">
                 {showWishList(products)}
             </div>
-            <Overlay isModal={isModal} setIsModal={handleSetIsModal} isProduct={isProduct} />
+            <Overlay isModal={isModal} wishList={products} setIsModal={handleSetIsModal} isProduct={isProduct} />
 
 
         </div>

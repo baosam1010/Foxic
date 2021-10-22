@@ -13,7 +13,7 @@ function NewArrival(props) {
   const [isColor] = useState(false);
   const [isAddToCart] = useState(false);
   // const [newLink, setNewLink] = useState('');
-  // const { setIsModal, setIsProduct } = props;
+  const { setIsModal, setIsProduct } = props;
   const {
      onAddToCart,  onAddToWishList,
      productsList, wishList, } = props;
@@ -168,7 +168,7 @@ function NewArrival(props) {
   // };
   const showCollections = (productsList, isColor, isAddToCart) => {
     let xhtml = null;
-    if (productsList.length > 0) {
+    if (productsList) {
       xhtml = productsList.map((product, i) => {
         // let nameProduct = product.name.toLowerCase().replace(/ /g, "-");
         // let index = -1;
@@ -190,7 +190,8 @@ function NewArrival(props) {
             wishList={wishList} 
             onAddToCart={onAddToCart}
             onAddToWishList={onAddToWishList}
-
+            setIsModal={setIsModal}
+            setIsProduct={setIsProduct}
           />
           // noteProductItem.....
         );
@@ -228,8 +229,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    onAddToCart: (product) => {
-      dispatch(actAddToCart(product, 1));
+    onAddToCart: (product,quantity, color) => {
+      dispatch(actAddToCart(product, quantity, color));
       dispatch(actShowToast("Add Product Cart Sucess"))
       setTimeout(() => {
         dispatch(actHideToast(""));

@@ -1,11 +1,13 @@
 import * as Types from './../constants/ActionTypes';
 // import { Posts } from '../constants/Products';
 
-export const actAddToCart = (product, quantity) => {
+export const actAddToCart = (product, quantity, color, size) => {
     return {
         type: Types.ADD_TO_CART,
         product,
-        quantity
+        quantity,
+        color, 
+        size
     }
 };
 
@@ -16,11 +18,11 @@ export const actDeleteProductInCart = (product) => {
     }
 };
 
-export const actUpdateProductInCart = (product, quantity) => {
+export const actUpdateProductInCart = (product, quantity, color, size) => {
     return {
         type: Types.UPDATE_PRODUCT_IN_CART,
         product,
-        quantity
+        quantity, color, size
     }
 };
 
@@ -126,6 +128,19 @@ export const actHideToast = (message) => {
 export const actGetCategory = (products) => {
     return {
         type: Types.GET_CATEGORY,
+        products
+    }
+}
+// action get collection and arrival
+export const actGetCollection = (products) => {
+    return {
+        type: Types.GET_COLLECTION,
+        products
+    }
+};
+export const actGetArrival = (products) => {
+    return {
+        type: Types.GET_ARRIVAL,
         products
     }
 }

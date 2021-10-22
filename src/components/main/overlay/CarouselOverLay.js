@@ -71,7 +71,7 @@ function CarouselOverLay(props) {
     return result;
   };
   return (
-    <div className="w-full ">
+    <div className="w-full p-1">
       <Slider asNavFor={nav2} ref={(slider) => (slider1 = slider)} {...settingArrow}>
         {showSlide1(linkImg)}
       </Slider>

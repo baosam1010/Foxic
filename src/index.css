@@ -47,7 +47,7 @@
     .slick-next{
       @apply w-7-30 !important;
     },
-    .addFirstBorder::first-child{
+    .addFirstBorder > li:first-child{
       @apply border-indigo-600 !important;
     }
     

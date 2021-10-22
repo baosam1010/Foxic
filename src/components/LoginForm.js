@@ -18,20 +18,6 @@ function LoginForm(props) {
                     {/* error */}
                     {error !== '' ? (<span className="my-2 italic text-red-500 text-sm ">{error}</span>) : null}
                     <div className="p-2">
-
-                        {/* <div className=" flex flex-col mb-2">
-                            <label className="text-base font-medium mb-1" htmlFor="name">Username:</label>
-                            <input
-                                className="px-2 py-1 border-2 border-gray-400 rounded outline-none focus:border-yellow-400 "
-                                type="text"
-                                name="name"
-                                id="name"
-                                max={15}
-                                onChange={(e) => setDetais({ ...details, name: e.target.value })}
-                                value={details.name}
-                            />
-                        </div> */}
-
                         <div className="flex flex-col mb-2">
                             <label className="text-base font-medium mb-1" htmlFor="email">Email:</label>
                             <input

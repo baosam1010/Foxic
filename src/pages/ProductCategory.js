@@ -11,21 +11,22 @@ function ProductCategory(props) {
     const { match, onGetCategory, productsCategory, wishList, onAddToCart, onAddToWishList } = props;
     let indexName = match.url.indexOf("/category");
     let urlName = match.url.slice(indexName + 10);
-    console.log("urlName:", urlName);
-    console.log("productsCategory:", productsCategory);
-
+    // console.log("keyword:", keyword);
+    // console.log("productsCategory:", productsCategory);
+    
     useEffect(() => {
         const getProducts = async () => {
+            
             const params = {
-                search: urlName
+                search: urlName,
             }
             const products = await productApi.getAll(params);
-            console.log("products", products);
+            // console.log("products", products);
             onGetCategory(products)
         };
         getProducts();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [urlName ])
 
     return (
         <div className="max-w-full">
@@ -48,9 +49,10 @@ function ProductCategory(props) {
                 </div>
             </div>
 
-            <div className="max-w-7xl m-auto">
-                <div className=" grid grid-cols-2 grid-flow-row gap-2 mx-2 md:grid-cols-3 md:gap-4 md:mx-4 lg:grid-cols-4 lg:mx-4 ">
-                    {
+            <div className="max-w-7xl m-auto ">
+                <div className=" grid grid-cols-2 grid-flow-row gap-2 mx-2 mb-10 md:grid-cols-3 md:gap-4 md:mx-4 lg:grid-cols-4 lg:mx-4 ">
+                    {   productsCategory.length>0 ?(
+                        
                         productsCategory.map((product) => {
                             return (
                                 <ProductItem
@@ -62,6 +64,7 @@ function ProductCategory(props) {
                                 />
                             )
                         })
+                    ):(<span className="text-lg font-medium"> Don't Have Product </span>)
                     }
                 </div>
             </div>
