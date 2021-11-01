@@ -41,10 +41,10 @@ function Header(props) {
   };
 
   return (
-    <div className=" text-white">
+    <div className="max-w-full text-white">
       <header className=" bg-black h-10 items-center leading-10">
         {/* social app */}
-        <div className="max-w-sm  md:max-w-7xl m-auto justify-between items-center flex ">
+        <div className="max-w-7xl m-auto justify-between items-center flex ">
           <ul className="hidden  lg:flex ">
             <li className="px-1 text-xl hover:text-indigo-500 hover:cursor-pointer">
               <i className=" fab fa-facebook-f"></i>
@@ -126,27 +126,27 @@ function Header(props) {
               <div className="hidden  group-hover:block addBefore absolute top-0 left-0 transform translate-y-11/46 w-26 z-10 bg-white rounded border border-gray-400">
                 <ul className="">
                   <li className="w-full flex items-center hover:bg-gray-400">
-                    <Link className="w-full text-black text-base  px-2 py-1 hover:cursor-pointer " to="/shoes">
+                    <Link className="w-full text-black text-base  px-2 py-1 hover:cursor-pointer " to="/category/shoes">
                       <span className="w-full hover:text-white"> Shoes</span>
                     </Link>
                   </li>
                   <li className="w-full flex items-center hover:bg-gray-400">
-                    <Link className="w-full text-black text-base  px-2 py-1 hover:cursor-pointer " to="/jacket">
+                    <Link className="w-full text-black text-base  px-2 py-1 hover:cursor-pointer " to="/category/jacket">
                       <span className="w-full hover:text-white"> Jacket</span>
                     </Link>
                   </li>
                   <li className="w-full flex items-center hover:bg-gray-400">
-                    <Link className="w-full text-black text-base  px-2 py-1 hover:cursor-pointer " to="/t-shirt">
+                    <Link className="w-full text-black text-base  px-2 py-1 hover:cursor-pointer " to="/category/t-shirt">
                       <span className="w-full hover:text-white"> T-shirt</span>
                     </Link>
                   </li>
                   <li className="w-full flex items-center hover:bg-gray-400">
-                    <Link className="w-full text-black text-base  px-2 py-1 hover:cursor-pointer " to="/jacket">
+                    <Link className="w-full text-black text-base  px-2 py-1 hover:cursor-pointer " to="/category/jacket">
                       <span className="w-full hover:text-white"> Jacket</span>
                     </Link>
                   </li>
                   <li className="w-full flex items-center hover:bg-gray-400">
-                    <Link className="w-full text-black text-base  px-2 py-1 hover:cursor-pointer " to="/wallet">
+                    <Link className="w-full text-black text-base  px-2 py-1 hover:cursor-pointer " to="/category/wallet">
                       <span className="w-full hover:text-white"> Wallet</span>
                     </Link>
                   </li>
@@ -162,27 +162,27 @@ function Header(props) {
               <div className="hidden  group-hover:block addBefore absolute top-0 left-0 transform translate-y-11/46 w-26 z-10 bg-white rounded border border-gray-400">
                 <ul className="">
                   <li className="w-full flex items-center hover:bg-gray-400 ">
-                    <Link className="w-full text-black text-base  px-2 py-1  hover:cursor-pointer " to="/shoes">
+                    <Link className="w-full text-black text-base  px-2 py-1  hover:cursor-pointer " to="/category/shoes">
                       <span className="w-full hover:text-white"> Shoes</span>
                     </Link>
                   </li>
                   <li className="w-full flex items-center hover:bg-gray-400 ">
-                    <Link className="w-full text-black text-base  px-2 py-1  hover:cursor-pointer " to="/jacket">
+                    <Link className="w-full text-black text-base  px-2 py-1  hover:cursor-pointer " to="/category/jacket">
                       <span className="w-full hover:text-white"> Jacket</span>
                     </Link>
                   </li>
                   <li className="w-full flex items-center hover:bg-gray-400 ">
-                    <Link className="w-full text-black text-base  px-2 py-1  hover:cursor-pointer " to="/t-shirt">
+                    <Link className="w-full text-black text-base  px-2 py-1  hover:cursor-pointer " to="/category/t-shirt">
                       <span className="w-full hover:text-white"> Skirt</span>
                     </Link>
                   </li>
                   <li className="w-full flex items-center hover:bg-gray-400 ">
-                    <Link className="w-full text-black text-base  px-2 py-1  hover:cursor-pointer " to="/jacket">
+                    <Link className="w-full text-black text-base  px-2 py-1  hover:cursor-pointer " to="/category/jacket">
                       <span className="w-full hover:text-white"> Jacket</span>
                     </Link>
                   </li>
                   <li className="w-full flex items-center hover:bg-gray-400 ">
-                    <Link className="w-full text-black text-base  px-2 py-1  hover:cursor-pointer " to="/wallet">
+                    <Link className="w-full text-black text-base  px-2 py-1  hover:cursor-pointer " to="/category/wallet">
                       <span className="w-full hover:text-white"> Wallet</span>
                     </Link>
                   </li>
@@ -255,14 +255,16 @@ function Header(props) {
       <div
         className={classNames(
           open ? "flex" : "hidden",
-          "relative max-w-4xl mx-auto text-black items-center z-10 px-2"
+          "relative max-w-4xl mx-auto text-black items-center z-10 px-2 "
         )}
       >
-        <div className="w-full bg-gray-300 absolute top-0 ">
+        <div className="group w-full  absolute top-0 right-0 px-4">
           <form
-            className="w-full flex flex-nowrap items-center justify-center border-b-4 border-yellow-400 "
+            className="w-full  flex flex-nowrap items-center justify-center border-b-4 border-yellow-400 "
             onSubmit={(e) => handleSubmit(e)}>
             <input
+              autoComplete="off"
+              // autoFocus={false}
               type="text"
               className="flex-grow outline-none pl-3 py-3 text-lg "
               placeholder="What are you looking for?"
@@ -270,11 +272,22 @@ function Header(props) {
               value={search}
               onChange={(e) => { setSearch(e.target.value) }}
             />
-            <div className="right-0 pl-3 pr-4 hover:cursor-pointer"
+            <div className="right-0 pl-3 pr-4 py-3/12 bg-white hover:cursor-pointer"
               onClick={openSearch}>
-              <i className="text-3xl text-black  fas fa-times "></i>
+              <i className="text-3xl  text-black  fas fa-times "></i>
             </div>
           </form>
+          <div className="hidden group-hover:block w-full relative top-0 h-32 bg-white ">
+            {/* <h4 className="border-b-2 border-gray-400 my-2 pl-3 pb-2 text-base font-medium">History search</h4> */}
+            <ul className="w-full h-full overflow-y-scroll">
+              <li className="w-full px-4 py-1 hover:bg-gray-300 hover:cursor-pointer">men</li>
+              <li className="w-full px-4 py-1 hover:bg-gray-300 hover:cursor-pointer">women</li>
+              <li className="w-full px-4 py-1 hover:bg-gray-300 hover:cursor-pointer">jacket</li>
+              <li className="w-full px-4 py-1 hover:bg-gray-300 hover:cursor-pointer">women</li>
+              <li className="w-full px-4 py-1 hover:bg-gray-300 hover:cursor-pointer">men</li>
+              <li className="w-full px-4 py-1 hover:bg-gray-300 hover:cursor-pointer">women</li>
+            </ul>
+          </div>
         </div>
       </div>
       {openModal && <ModalHeader

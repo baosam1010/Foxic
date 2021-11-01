@@ -24,7 +24,7 @@ function Account(props) {
             <h2 className="text-3xl font-semibold mb-7">Account Details</h2>
             {inforAccount.length === 0 ?(<span className="text-lg font-medium">You must be Logined</span>):(
             <div className="grid grid-cols-12 gap-4">
-                <div className="col-span-6 border-1 rounded">
+                <div className="col-span-12 lg:col-span-6  border-1 rounded">
                     <div className=" p-3">
                         <h3 className="text-lg font-semibold mb-3">Personal Information</h3>
                         <div>
@@ -56,15 +56,14 @@ function Account(props) {
 
 
             </div>)}
-            
-            
+                        
             <div className={classNames(update ? 'block' : 'hidden', "w-full border rounded mt-3")}>
                 <form className="p-3" onSubmit={(e)=>onSubmitForm(e)}>
                     <h3 className="text-lg font-semibold mb-3">Update Account Details</h3>
                     <div className="grid grid-cols-2 gap-4">
 
                         {/* <div className="flex flex-col col-span-6"> */}
-                            <div className="col-span-1 mb-1 flex flex-col">
+                            <div className="col-span-2 md:col-span-1 mb-1 flex flex-col">
                                 <label htmlFor="name" className="text-base font-medium mr-3">Name:</label>
                                 <input
                                     className="bg-gray-100 pl-3 py-2 text-base "
@@ -76,7 +75,7 @@ function Account(props) {
 
                                 />
                             </div>
-                            <div className="col-span-1 mb-1 flex flex-col">
+                            <div className="col-span-2 md:col-span-1 mb-1 flex flex-col">
                                 <label htmlFor="name"  className="text-base font-medium mr-3">User Name:</label>
                                 <input
                                     className="bg-gray-100 pl-3 py-2 text-base"
@@ -90,7 +89,7 @@ function Account(props) {
                             </div>
                         {/* </div> */}
                         {/* <div className="flex flex-col col-span-6"> */}
-                            <div className="col-span-1 mb-1 flex flex-col ">
+                            <div className="col-span-2 md:col-span-1 mb-1 flex flex-col ">
                                 <label htmlFor="name" className="text-base font-medium mr-3">Email:</label>
                                 <input
                                     className="bg-gray-100 pl-3 py-2 text-base"
@@ -101,7 +100,7 @@ function Account(props) {
                                     onChange={(e) =>setInforChange({...inforChange, email: e.target.value })}
                                 />
                             </div>
-                            <div className="col-span-1 mb-1 flex flex-col">
+                            <div className="col-span-2 md:col-span-1 mb-1 flex flex-col">
                                 <label htmlFor="name"  className="text-base font-medium mr-3">Phone:</label>
                                 <input
                                     className="bg-gray-100 pl-3 py-2 text-base"

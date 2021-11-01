@@ -1,7 +1,8 @@
 import React from 'react'
 
 function ItemPostComment(props) {
-  const { comment } = props
+  const { comment, inforAccount } = props
+  // console.log("username:", inforAccount)
   const { name, time, content, img } = comment;
   let dtime = time !== '' ? time.slice(0, 15) : 'Nov 08 2021'
   return (
@@ -19,7 +20,8 @@ function ItemPostComment(props) {
             <span>{dtime}</span>
           </div>
           <h3 className="mt-1 text-18 text-base font-medium">
-            {name}
+            {inforAccount.length > 0 ? inforAccount[0].username : name}
+            {/* {name} */}
           </h3>
           <p className="mt-3">
             {`${content}

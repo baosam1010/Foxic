@@ -6,6 +6,7 @@ module.exports = {
      './src/**/*.{js,jsx,ts,tsx,vue}',],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    
     extend: { 
       height: {
         '500': '500px',
@@ -53,13 +54,16 @@ module.exports = {
         '110':'110px',
         '7-30':'30px',
         '26':'106px',
+        '360':'360px',
+        '400':'400px',
+        '500':'500px',
         '90vw':'90vw',
         '40vw':'40vw',
       },
       leading:{
         '42':'42px',
       }
-    },
+    }
   },
   variants: {
     extend: {
@@ -71,6 +75,8 @@ module.exports = {
       border:['acive','hover','focus','target'],
       borderWidth: ['first'], 
       borderColor: ['first'], 
+      opacity: ['disabled'],
+      pointerEvents: ['hover', 'focus'],
       padding:['responsive']
     },
 

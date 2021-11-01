@@ -49,6 +49,9 @@
     },
     .addFirstBorder > li:first-child{
       @apply border-indigo-600 !important;
+    },
+    .firstLetter::first-letter{
+      @apply uppercase;
     }
     
     

@@ -21,7 +21,7 @@ function Delivery(props) {
             <h1 className="w-full text-center text-2xl font-semibold uppercase mb-2 pt-4">
               Delivery Service
             </h1>
-            <div className="w-full px-5 pb-5">
+            <div className="w-full px-2 lg:px-5 pb-5">
               <div>
                 <h2 className="mt-4">Our parcel courier service</h2>
                 <p className="mt-4">{`

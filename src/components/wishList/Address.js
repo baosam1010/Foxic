@@ -22,7 +22,7 @@ function Addresses(props) {
             <h2 className="text-3xl font-semibold mb-7">My Address</h2>
             {inforAccount.length === 0 ?(<span className="text-lg font-medium">You must be Logined</span>):(
             <div className="grid grid-cols-12 gap-4">
-                <div className="col-span-6 border-1 rounded">
+                <div className="col-span-12 lg:col-span-6  border-1 rounded">
                     <div className=" p-3">
                         <h3 className="text-lg font-semibold mb-3">
                             Address 1
@@ -60,7 +60,6 @@ function Addresses(props) {
                 <form className="p-3" onSubmit={(e)=>handleSubmit(e)}>
                     <h3 className="text-lg font-semibold mb-3">Edit Address</h3>
                     <div className="w-full">
-
                         <div className="flex flex-col">                           
                             <div className="mb-1 flex flex-col">
                                 <label className="text-base font-medium mr-3 mb-2">CITY:</label>
@@ -80,7 +79,7 @@ function Addresses(props) {
                                 </select>
                             </div>
                         </div>
-                        <div className="flex flex-row ">
+                        <div className="flex flex-col md:flex-row ">
                             <div className="mb-1 mr-3 flex flex-col ">
                                 <label className="text-base font-medium mr-3 mb-2">STREET:</label>
                                 <input 

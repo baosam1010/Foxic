@@ -61,11 +61,16 @@ function App(props) {
   const [isLogin, setIsLogin] = useState(false);
   const [isRegister, setIsRegister] = useState(false);
   const [error, setError] = useState('');
+  // const [userLogin, setUserLogin] = useState({email:'', password:''});
+
 
   let arrEmail = Users.map(user => user.email)
 
   const Login = (details) => {
     // console.log(details)
+    // if(details.email!==""){
+    //   setUserLogin(details)
+    // };
     if (arrEmail.includes(details.email)) {
       let userLogin = Users.filter(item => { return item.email === details.email })
       console.log('Logined')
@@ -137,9 +142,13 @@ function App(props) {
   };
 
   useEffect(() => {
+    // console.log("details_ userEffect")
     const getUers = async () => {
       try {
-        const response = await userApi.getAll();
+        const params = {
+          email: "Sincere@april.biz",
+        }
+        const response = await userApi.getAll(params);
         // console.log("response: ",response);
         onSaveUserOnStore(response);
       } catch (error) {
@@ -148,6 +157,29 @@ function App(props) {
     };
     getUers();
   }, [onSaveUserOnStore]);
+
+  // test
+  // useEffect(() => {
+  //   const getUers = async () => {
+  //     let params =null;
+  //     try {
+  //       console.log("details_ userEffect:",  userLogin)
+  //       if(userLogin.email !== ""){
+  //         params = {
+  //           email: userLogin.email,
+  //         };
+  //         const response = await userApi.getA(params);
+  //         console.log("responseTest: ",response);
+  //       }else{
+          
+  //       }
+      
+  //     } catch (error) {
+  //       console.log('Fail to get Users');
+  //     }
+  //   };
+  //   getUers();
+  // }, [userLogin]);
 
 
   const [key, setKey] = useState('')
@@ -163,7 +195,7 @@ function App(props) {
 
   return (
     <Routers>
-      <div className="max-w-full">
+      <div className="w-full">
         <Header
           isLogin={isLogin}
           setIsLogin={handleLoginForm}

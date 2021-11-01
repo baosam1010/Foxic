@@ -16,7 +16,7 @@ function SizeGuide(props) {
           <h1 className="w-full text-center text-2xl font-semibold uppercase mb-2 pt-4">
             Size Guide
           </h1>
-          <div className="w-full px-5 pb-5">
+          <div className="w-full px-2 lg:px-5 pb-5">
             <table className="w-full text-center ">
               <thead>
                 <tr >

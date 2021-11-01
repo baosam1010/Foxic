@@ -4,6 +4,9 @@ const userApi = {
     getAll: (params) => {
         return axiosClient.get('https://jsonplaceholder.typicode.com/users');
     },
+    getA: (params) => {
+        return axiosClient.get('https://jsonplaceholder.typicode.com/users',{params});
+    },
     get:(id)=>{
         return axiosClient.get(`https://jsonplaceholder.typicode.com/users/${id}`);
     },

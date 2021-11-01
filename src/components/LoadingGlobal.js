@@ -1,9 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux';
+import { actHideLoading } from '../action';
 
 function LoadingGlobal(props) {
     const {isLoading} = props;
     // console.log("showLoading111", showLoading.showLoading);
+
     let xhtml = null;
     if(isLoading.showLoading === true){
         xhtml = (
@@ -19,5 +21,14 @@ const mapStateToProps = (state) => {
     return {
         isLoading: state.Loading,
     }
+};
+const mapDispatchToProps = (dispatch, props) => {
+    return {
+        onLoading: () =>{
+            setTimeout(() => {
+                dispatch(actHideLoading())
+              }, 1500);
+        }
+    }
 }
-export default connect(mapStateToProps, null)(LoadingGlobal);
+export default connect(mapStateToProps, mapDispatchToProps)(LoadingGlobal);

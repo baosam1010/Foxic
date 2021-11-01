@@ -6,7 +6,7 @@ function ModalHeader(props) {
     const { openModal, setOpenModal } = props;
     return (
         <div
-            className="md:hidden fixed inset-0 bg-gray-100 bg-opacity-25 z-50">
+            className="lg:hidden fixed inset-0 bg-gray-100 bg-opacity-25 z-50">
             <div className="w-90vw sm:w-40vw h-screen  flex flex-col bg-white text-black">
                 <div className="w-full flex items-center justify-center mt-10">
                     <button
@@ -22,35 +22,35 @@ function ModalHeader(props) {
                             <Link to="/" onClick={() => { setOpenModal(!openModal) }}>Home</Link>
                         </li>
                         <li className="w-full mb-2 text-lg font-medium">
-                            <Link to="/accessories" onClick={() => { setOpenModal(!openModal) }}>Accessories</Link>
+                            <Link to="/category/accessories" onClick={() => { setOpenModal(!openModal) }}>Accessories</Link>
                         </li>
                         <li className="w-full mb-2 group ">
-                            <div className="w-full flex items-center justify-between  text-lg font-medium">
+                            <div  className="w-full flex items-center justify-between  text-lg font-medium">
                                 Men
                                 <i className="block group-hover:hidden fas fa-angle-right"></i>
                                 <i className="hidden group-hover:block fas fa-angle-down"></i>
                             </div>
                             <ul className="hidden group-hover:block w-full ml-3 ">
                                 <li className="w-ful  text-lg ">
-                                    <Link to="/shoes"  onClick={() => { setOpenModal(!openModal) }}>Shoes</Link>
+                                    <Link to="/category/shoes"  onClick={() => { setOpenModal(!openModal) }}>Shoes</Link>
                                 </li>
                                 <li className="w-full  text-lg">
-                                    <Link to="/shoes" onClick={() => { setOpenModal(!openModal) }}>Jacket</Link>
+                                    <Link to="/category/t-shirt" onClick={() => { setOpenModal(!openModal) }}>T-shirt</Link>
                                 </li>
                             </ul>
                         </li>
                         <li className="w-full mb-2 group ">
-                            <div className="w-full flex items-center justify-between text-lg font-medium">
+                            <div to="/category/women" className="w-full flex items-center justify-between text-lg font-medium">
                                 Women
                                 <i className="block group-hover:hidden fas fa-angle-right"></i>
                                 <i className="hidden group-hover:block fas fa-angle-down"></i>
                             </div>
                             <ul className="hidden group-hover:block w-full ml-3 ">
                                 <li className="w-full  text-lg">
-                                    <Link to="/shoes" onClick={() => { setOpenModal(!openModal) }}>Shoes</Link>
+                                    <Link to="/category/shoes" onClick={() => { setOpenModal(!openModal) }}>Shoes</Link>
                                 </li>
                                 <li className="w-full  text-lg">
-                                    <Link to="/shoes" onClick={() => { setOpenModal(!openModal) }}>Jacket</Link>
+                                    <Link to="/category/t-shirt" onClick={() => { setOpenModal(!openModal) }}>T-shirt</Link>
                                 </li>
                             </ul>
                         </li>

@@ -229,7 +229,7 @@ function ProductItem(props) {
                 </div>
 
                 {/* mini Product ben trai */}
-                <div className="w-full bottom-0 relative  md:absolute   md:hidden md:group-hover:block ">
+                <div className="w-full bottom-0 relative md:w-14  md:absolute   md:hidden md:group-hover:block ">
                     <ul className=" flex justify-evenly md:flex-col md:justify-around  md:ml-2  ">
                         {miniProductLeft(product)}
                     </ul>

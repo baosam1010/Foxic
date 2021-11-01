@@ -3,14 +3,14 @@ import React, { useState } from 'react'
 function LoginForm(props) {
 
     const [details, setDetais] = useState({ name: '', email: '', password: '' });
-    const { Login, error, isLogin, setIsLogin }=props;
+    const { Login, error, isLogin, setIsLogin } = props;
 
     const handleSubmitForm = (e) => {
         e.preventDefault();
         Login(details)
     };
-
     return (
+
         <div className="fixed inset-0 flex items-center justify-center bg-gray-200 bg-opacity-40 z-20">
             <div className="p-2 bg-gradient-to-br from-red-400 to-yellow-600  w-full mx-2 lg:w-3/12 rounded">
                 <form onSubmit={handleSubmitForm} className=" bg-white rounded" >

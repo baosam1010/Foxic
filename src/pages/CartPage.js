@@ -7,7 +7,7 @@ import { actDeleteProductInCart, actUpdateProductInCart } from "../action";
 
 function CartPage(props) {
   const { cart, inforAccount } = props;
-  console.log("inforAccount1245:", inforAccount)
+  // console.log("inforAccount1245:", inforAccount)
   const cartNum = cart.length;
 
   const showCartItem = (cart) => {

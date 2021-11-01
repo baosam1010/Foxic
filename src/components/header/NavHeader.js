@@ -21,27 +21,27 @@ function NavHeader() {
               <div className="hidden  group-hover:block addBefore absolute top-0 left-0 transform translate-y-11/46 w-26 z-10 bg-white rounded border border-gray-400">
                 <ul className="">
                   <li className="w-full flex items-center hover:bg-gray-400">
-                    <Link className="w-full text-black text-base  px-2 py-1 hover:cursor-pointer " to="/shoes">
+                    <Link className="w-full text-black text-base  px-2 py-1 hover:cursor-pointer " to="/category/shoes">
                       <span className="w-full hover:text-white"> Shoes</span>
                     </Link>
                   </li>
                   <li className="w-full flex items-center hover:bg-gray-400">
-                    <Link className="w-full text-black text-base  px-2 py-1 hover:cursor-pointer " to="/jacket">
+                    <Link className="w-full text-black text-base  px-2 py-1 hover:cursor-pointer " to="/category/jacket">
                       <span className="w-full hover:text-white"> Jacket</span>
                     </Link>
                   </li>
                   <li className="w-full flex items-center hover:bg-gray-400">
-                    <Link className="w-full text-black text-base  px-2 py-1 hover:cursor-pointer " to="/t-shirt">
+                    <Link className="w-full text-black text-base  px-2 py-1 hover:cursor-pointer " to="/category/t-shirt">
                       <span className="w-full hover:text-white"> T-shirt</span>
                     </Link>
                   </li>
                   <li className="w-full flex items-center hover:bg-gray-400">
-                    <Link className="w-full text-black text-base  px-2 py-1 hover:cursor-pointer " to="/jacket">
+                    <Link className="w-full text-black text-base  px-2 py-1 hover:cursor-pointer " to="/category/jacket">
                       <span className="w-full hover:text-white"> Jacket</span>
                     </Link>
                   </li>
                   <li className="w-full flex items-center hover:bg-gray-400">
-                    <Link className="w-full text-black text-base  px-2 py-1 hover:cursor-pointer " to="/wallet">
+                    <Link className="w-full text-black text-base  px-2 py-1 hover:cursor-pointer " to="/category/wallet">
                       <span className="w-full hover:text-white"> Wallet</span>
                     </Link>
                   </li>
@@ -57,27 +57,27 @@ function NavHeader() {
               <div className="hidden  group-hover:block addBefore absolute top-0 left-0 transform translate-y-11/46 w-26 z-10 bg-white rounded border border-gray-400">
                 <ul className="">
                   <li className="w-full flex items-center hover:bg-gray-400 ">
-                    <Link className="w-full text-black text-base  px-2 py-1  hover:cursor-pointer " to="/shoes">
+                    <Link className="w-full text-black text-base  px-2 py-1  hover:cursor-pointer " to="/category/shoes">
                       <span className="w-full hover:text-white"> Shoes</span>
                     </Link>
                   </li>
                   <li className="w-full flex items-center hover:bg-gray-400 ">
-                    <Link className="w-full text-black text-base  px-2 py-1  hover:cursor-pointer " to="/jacket">
+                    <Link className="w-full text-black text-base  px-2 py-1  hover:cursor-pointer " to="/category/jacket">
                       <span className="w-full hover:text-white"> Jacket</span>
                     </Link>
                   </li>
                   <li className="w-full flex items-center hover:bg-gray-400 ">
-                    <Link className="w-full text-black text-base  px-2 py-1  hover:cursor-pointer " to="/t-shirt">
+                    <Link className="w-full text-black text-base  px-2 py-1  hover:cursor-pointer " to="/category/t-shirt">
                       <span className="w-full hover:text-white"> Skirt</span>
                     </Link>
                   </li>
                   <li className="w-full flex items-center hover:bg-gray-400 ">
-                    <Link className="w-full text-black text-base  px-2 py-1  hover:cursor-pointer " to="/jacket">
+                    <Link className="w-full text-black text-base  px-2 py-1  hover:cursor-pointer " to="/category/jacket">
                       <span className="w-full hover:text-white"> Jacket</span>
                     </Link>
                   </li>
                   <li className="w-full flex items-center hover:bg-gray-400 ">
-                    <Link className="w-full text-black text-base  px-2 py-1  hover:cursor-pointer " to="/wallet">
+                    <Link className="w-full text-black text-base  px-2 py-1  hover:cursor-pointer " to="/category/wallet">
                       <span className="w-full hover:text-white"> Wallet</span>
                     </Link>
                   </li>

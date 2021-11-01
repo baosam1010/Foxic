@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 function PostAside() {
     return (
-        <div className="col-span-2 ">
+        <div className="hidden md:block md:col-span-2 ">
             {/* popular aside */}
             <div className="mt-7">
                 <h2 className="uppercase mb-3 leading-4 text-base font-semibold">POPULAR TAGS</h2>

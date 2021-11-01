@@ -1,25 +1,44 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import classNames from 'classnames';
 
 
 function ButtonTop() {
-    // var mybutton = document.getElementById("myBtn");
-    const [showTop,setShowTop] =useState(false)
-    // When the user scrolls down 20px from the top of the document, show the button
-    window.onscroll = function() {scrollFunction()};
-    
-    function scrollFunction() {
-      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-        // mybutton.style.display = "block";
-        // console.log("scroll:",document.body.scrollTop +"&&" + document.documentElement.scrollTop )
-        setShowTop(true);
-      } else {
-        // mybutton.style.display = "none";
-        setShowTop(false);
 
-      }
-    };
+    const [showTop,setShowTop] =useState(false)
+
+    // window.onscroll = function() {scrollFunction()};
+    // function scrollFunction() {
+    //   if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+    //     // mybutton.style.display = "block";
+    //     // console.log("scroll:",document.body.scrollTop +"&&" + document.documentElement.scrollTop )
+    //     setShowTop(true);
+    //   } else {
+    //     setShowTop(false);
+    //   }
+    // };
     
+    useEffect(() => {
+      let lastScroll = 0;
+      window.addEventListener("scroll", () => {
+          let currentScroll = document.documentElement.scrollTop;
+          // console.log({currentScroll})
+          if ( currentScroll < 400 ||  currentScroll > lastScroll ) {
+            setShowTop(false);
+          } else if (  currentScroll < lastScroll ) {
+            setShowTop(true);
+          };
+
+          if (currentScroll <= 0) {
+              lastScroll = 0
+          } else { lastScroll = currentScroll }
+      })
+
+      return () => {
+        setShowTop(false);
+      }
+  }, []);
+
+
     // When the user clicks on the button, scroll to the top of the document
     function topFunction() {
       document.body.scrollTop = 0;

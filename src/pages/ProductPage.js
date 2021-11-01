@@ -17,29 +17,43 @@ import ContentProduct from "../components/product/ContentProduct";
 import FooterProductPage from "../components/product/FooterProductPage";
 
 function ProductPage(props) {
-  const { onAddToCart, onLoading, onAddToWishList, wishList } = props;
+  const { onAddToCart, onLoading,onHideLoading, onAddToWishList, wishList } = props;
   const [isSizeGuide, setIsSizeGuide] = useState(false);
   const [isDelivery, setIsDelivery] = useState(false);
   const { match } = props;
-
+  const [load, setLoad] = useState(false);
+  let html = null;
   let nameUpdate = match.url.indexOf("/product");
   let urlName = match.url.slice(nameUpdate + 9);
   // console.log(urlName);
+ 
+  useEffect(() => {
+    if(load){
+      onLoading();
+    }else{
+      onHideLoading();
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[load]);
 
   // let quantity = useRef(num);
   const [product1, setProduct1] = useState(null);
   useEffect(() => {
-    const getProduct = async () => {
-      const result = await productApi.get(urlName);
-      // console.log('result:', result)
-      if (!result) {
-        onLoading()
-      }
-      setProduct1(result);
-
-    };
-    getProduct();
-  }, [onLoading, urlName])
+    try {
+      setLoad(true);
+      const getProduct = async () => {
+        const result = await productApi.get(urlName);
+        // console.log('result:', result)
+        if (result ) {
+          setProduct1(result);
+          setLoad(false);
+        }
+      };
+      getProduct();
+    } catch (error) {
+      console.log("Fecth prodcts fail")
+    }
+  }, [urlName]);
 
   // console.log('product1:', product1);
   const [products, setProducts] = useState(null);
@@ -47,21 +61,22 @@ function ProductPage(props) {
     try {
       const getProducts = async () => {
         const result = await productApi.getAll();
-        setProducts(result);
+        if(result) {
+          setProducts(result);
+        }
       };
       getProducts();
     } catch (error) {
       console.log("Fecth prodcts fail")
-    }
+    };  
   }, []);
   // console.log("productsPage1111:", products)
 
-  const handleSubmitProduct=(product, quantity, color) =>{
-    console.log("Productpage:", {product, quantity, color})
-    onAddToCart(product, quantity, color)
+  function handleSubmitProduct(product, quantity, color) {
+    console.log("Productpage:", { product, quantity, color });
+    onAddToCart(product, quantity, color);
   }
-  
-  let html = null
+
   if (product1 && products) {
     html = (
       <div className="max-w-full">
@@ -101,7 +116,6 @@ function ProductPage(props) {
                   wishList={wishList}
                   onAddToWishList={onAddToWishList}
                 />
-
               </div>
             </div>
           </div>
@@ -148,10 +162,11 @@ function ProductPage(props) {
       </div>
 
     )
-  }
+  };
+
+
   return (html)
   // return (
-
   // <div className="max-w-full">
   //   {/* BREAD CRUM */}
   //   <div className="bg-gray-200 ">
@@ -241,9 +256,11 @@ const mapDispatchToProps = (dispatch, props) => {
     },
     onLoading: () => {
       dispatch((actShowLoading()));
-      setTimeout(() => {
-        dispatch(actHideLoading())
-      }, 1500);
+      
+    },
+    onHideLoading: () => {
+      dispatch(actHideLoading());
+
     },
     onAddToWishList: (product) => {
       dispatch(actAddToWishList(product));
@@ -257,7 +274,7 @@ const mapDispatchToProps = (dispatch, props) => {
 const mapStateToProps = (state) => {
   return {
     Products: state.Products,
-    showLoading: state.Loading,
+    Loading: state.Loading,
     wishList: state.WishListCart,
 
   };

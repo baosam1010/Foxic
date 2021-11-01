@@ -3,28 +3,26 @@ import React, { useEffect, useState } from 'react'
 
 function FooterProductPage(props) {
 
-    const { 
-         product, 
-         onAddToCart,
-          } = props;
-         
+    const {
+        product,
+        onAddToCart,
+    } = props;
+  
+
     const [showFooter, setShowFooter] = useState(false);
     const [num, setNum] = useState(1);
-    
-    const handleChangeInput=(e)=>{
+
+    const handleChangeInput = (e) => {
         setNum(e.target.value);
     };
-    const handleAddToCart = (product, quantity)=>{
+    const handleAddToCart = (product, quantity) => {
         let color = null;
-        if(product.color.length>0){
+        if (product.color.length > 0) {
             color = product.color[0].slice(3, -4);
-        }else{color ="defaultColor"}
+        } else { color = "defaultColor" }
         onAddToCart(product, quantity, color);
         setNum(1)
     };
-    useEffect(() => {
-
-    },[product])
 
     useEffect(() => {
         let lastScroll = 0;
@@ -43,7 +41,7 @@ function FooterProductPage(props) {
         })
 
         return () => {
-
+            setShowFooter(false);
         }
     }, []);
 
@@ -83,7 +81,7 @@ function FooterProductPage(props) {
                         </label>
                         <input
                             className="hidden lg:block pl-8 pr-2  py-3  w-20 text-2xl  bg-gray-200 rounded mx-1  hidArrInput"
-                            type="number"
+                            // type="number"
                             value={num}
                             onChange={(e) => handleChangeInput(e)}
                         />

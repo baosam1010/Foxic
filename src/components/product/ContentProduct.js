@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 function ContentProduct(props) {
     const [formProduct, setFormProduct] = useState({
         quantity: 1,
-        color: "red",
+        color: "defaultColor",
         size: "small",
       });
 
@@ -78,14 +78,13 @@ function ContentProduct(props) {
     // };
 
     useEffect(() => {
-        console.log("Re-Render 11111")
+        // console.log("Re-Render 11111")
     },[formProduct]);
 
     function handleChangeForm(e) {
         e.preventDefault();
-        console.log("Submited !!!");
-        console.log("fomrOverlay1:",  {product, ...formProduct} );
-
+        // console.log("Submited !!!");
+        // console.log("fomrOverlay1:",  {product, ...formProduct} );
         onAddToCart( product, 
             formProduct.quantity, 
             formProduct.color, 
@@ -109,9 +108,8 @@ function ContentProduct(props) {
     };
 
     const handleChoiceColor = (color, e) => {
-        console.log(`color:`, color);
+        // console.log(`color:`, color);
         // console.log('target:', e.target.parentElement)
-        // console.log('e1:',e.target.parentElement.parentElement.children)
         if (e) {
             const arrLi = e.target.parentElement.parentElement.children;
             // console.log("arrLi111:", arrLi)

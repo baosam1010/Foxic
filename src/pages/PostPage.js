@@ -27,13 +27,12 @@ function PostPage(props) {
   const handleSubmitForm = (e) => {
     e.preventDefault();
     if(inforAccount.length > 0) {
-
       setComment({ ...comment, name:inforAccount[0].username, email: inforAccount[0].email });
     }else{
-      setComment({ ...comment });
+      setComment({ ...comment });      
     }
-    // console.log("commentADD:", comment);
     onAddCommentPost(comment);
+    setComment({ ...comment, content: "" });    
   };
 
   const showItemComment = (comments) => {
@@ -44,7 +43,7 @@ function PostPage(props) {
     })
     result = arrComments.map((item, index) => {
         return (
-            <ItemPostComment key={item.content + index} comment={item} />
+            <ItemPostComment inforAccount={inforAccount} key={item.content + index} comment={item} />
         )
     })
 
@@ -77,9 +76,9 @@ function PostPage(props) {
           </h1>
         </div>
 
-        <div className="grid grid-cols-12 gap-4">
+        <div className="w-full grid grid-cols-12 gap-4">
           {/* list post */}
-          <div className="col-span-10 ">
+          <div className="col-span-12 px-2 md:col-span-10 ">
             <div className="mt-7">
               <h2 className="text-2xl font-semibold">{url}</h2>
             </div>
@@ -138,9 +137,9 @@ function PostPage(props) {
               </p>
               <br />
 
-              <div className="flex  relative bg-gray-100  text-green-300 text-3xl font-medium italic my-7">
-                <blockquote className="  pl-10 py-10 pr-24 addDouble">
-                  <p>
+              <div className="flex relative bg-gray-100  text-green-300 text-xl md:text-3xl font-medium italic my-7">
+                <blockquote className=" p-4 md:pl-10 md:py-10 md:pr-24 addDouble">
+                  <p className="">
                     {`"But in certain circumstances and owing to the claims of duty or obligations of business
                                     it willfrequently occur that pleasures have to be repudiated and annoyances accepted."`}
                   </p>
@@ -168,16 +167,16 @@ function PostPage(props) {
               </p>
 
               <div className="mt-4">
-                <div className="w-full flex ">
-                  <img className="block w-3/6 pr-4" src="https://big-skins.com/frontend/foxic-html-demo/images/blog/blog-04.webp" alt="blog4" />
-                  <p className="pl-4">
+                <div className="w-full flex flex-col md:flex-row">
+                  <img className="block w-full md: mb-4 md:w-3/6 md:pr-4" src="https://big-skins.com/frontend/foxic-html-demo/images/blog/blog-04.webp" alt="blog4" />
+                  <p className="w-full md:w-3/6 md:pl-4">
                     {`No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, 
-                                but because those who do not know how to pursue pleasure rationally encounter. 
-                                But I must explain to you how all this mistaken idea of denouncing pleasure 
-                                and praising pain was born and I will give you a complete account of the system, 
-                                and expound the actual teachings of the great explorer of the truth, the master-builder 
-                                of human happiness.
-                                `}
+                        but because those who do not know how to pursue pleasure rationally encounter. 
+                        But I must explain to you how all this mistaken idea of denouncing pleasure 
+                        and praising pain was born and I will give you a complete account of the system, 
+                        and expound the actual teachings of the great explorer of the truth, the master-builder 
+                        of human happiness.
+                        `}
                   </p>
                 </div>
               </div>
@@ -271,7 +270,7 @@ function PostPage(props) {
               </h2>
               <form onSubmit={(e) => handleSubmitForm(e)}>
                 <div className="w-full mt-2 grid grid-cols-2 gap-4 mb-4">
-                  <div className={classNames(inforAccount.length> 0 ? "hidden" : "block","col-span-1 ")}>
+                  <div className={classNames(inforAccount.length> 0 ? "hidden" : "block"," col-span-2 md:col-span-1 ")}>
                     <input
                       className="border-1 rounded px-3 py-3 w-full  focus:border-red-300 outline-none bg-gray-50 "
                       placeholder="Name"
@@ -284,7 +283,7 @@ function PostPage(props) {
                       }
                     />
                   </div>
-                  <div className={classNames(inforAccount.length > 0 ? "hidden" : "block" , "col-span-1")}>
+                  <div className={classNames(inforAccount.length > 0 ? "hidden" : "block" , "col-span-2 md:col-span-1")}>
                     <input
                       className="border-1 rounded px-3 py-3 w-full  focus:border-red-300 outline-none bg-gray-50 "
                       placeholder="Email"
